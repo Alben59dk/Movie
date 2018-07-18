@@ -8,28 +8,34 @@ import Requests from '../utils/Requests'
 
 import AlertBanner from './AlertBanner'
 
+import MoviesForm from '../utils/MoviesForm'
+
 export default class FormMovies extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
       movies: {
-        title: null,
-        year: null,
-        runtime: null,
+        title: '',
+        year: 0,
+        runtime: 0,
         poster: null,
-        description: null,
-        genre: null
+        description: '',
+        genre: []
       },
       alert: {
         visible: false,
         message: null,
-        status: null,
+        status: null
       }
     }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.fillFields = MoviesForm.fillFields.bind(this)
+    this.success = MoviesForm.success.bind(this)
+    this.echec = MoviesForm.echec.bind(this)
+    this.toggle = MoviesForm.toggle.bind(this)
   }
 
   componentDidMount () {
@@ -41,18 +47,6 @@ export default class FormMovies extends Component {
         )
         .catch(err => console.log(err))
     }
-  }
-
-  fillFields (movies) {
-    this.setState({
-      movies: {
-        title: movies.title,
-        year: movies.year,
-        description: movies.description,
-        poster: movies.poster,
-        runtime: movies.runtime
-      }
-    })
   }
 
   /**
@@ -82,97 +76,67 @@ export default class FormMovies extends Component {
     this.props.match.params.id !== undefined ? this.props.update(this.props.match.params.id, this.state.movies, this.success.bind(this), this.echec.bind(this)) : this.props.fetchMovies(formData, this.success.bind(this), this.echec.bind(this))
   }
 
-  success () {
-    this.setState({
-      alert: {
-      visible: true,
-      message: 'Enregistrement réalisé',
-      status: 'success'
-      }
-    })
-  }
-
-  echec (error) {
-    this.setState({
-      alert: {
-      visible: true,
-      message: error,
-      status: 'danger' 
-      }
-    })
-  }
-
-  toggle () {
-    this.setState({
-      alert: {
-        visible: false,
-        message: null,
-        status: null
-      }
-    })
-  }
-
   render () {
     return (
       <div>
         <AlertBanner visible={!!this.state.alert.visible} message={this.state.alert.message} status={this.state.alert.status} toggle={this.toggle.bind(this)} />
-      <Row className='justify-content-center'>
-        <Col xs={12} sm={8}>
-          <Form onSubmit={this.handleSubmit} >
+        <Row className='justify-content-center'>
+          <Col xs={12} sm={8}>
+            <Form onSubmit={this.handleSubmit} >
 
-            <FormGroup>
-              <Label for='title'>Title</Label>
-              <Input type='text' name='title' id='title' placeholder='Title' required value={this.state.movies.title} onChange={this.handleChange} />
-            </FormGroup>
-
-            <FormGroup>
-              <Label for='year'>Année</Label>
-              <Input type='number' name='year' id='year' placeholder='Année' min='1888' value={this.state.movies.year} onChange={this.handleChange} required />
-            </FormGroup>
-
-            <FormGroup>
-              <Label for='runtime'>Durée</Label>
-              <Input type='number' name='runtime' id='runtime' placeholder='Durée' min='0' value={this.state.movies.runtime} onChange={this.handleChange} required />
-            </FormGroup>
-
-            {
-              this.props.match.params.id === undefined &&
               <FormGroup>
-                <Label for='poster'>Affice</Label>
-                <Input type='file' id='poster' placeholder='affiche' onChange={
-                  event => {
-                    let file = event.target.files[0]
-                    let data = this.state.movies
-                    data.poster = file
-                    this.setState({
-                      movies: data
-                    })
-                  }
-                } required />
+                <Label for='title'>Title</Label>
+                <Input type='text' name='title' id='title' placeholder='Title' required value={this.state.movies.title} onChange={this.handleChange} />
               </FormGroup>
-            }
 
-            <FormGroup>
-              <Label for='description'>Description</Label>
-              <Input type='textarea' id='description' name='description' value={this.state.movies.description} onChange={this.handleChange} required />
-            </FormGroup>
+              <FormGroup>
+                <Label for='year'>Année</Label>
+                <Input type='number' name='year' id='year' placeholder='Année' min='1888' value={this.state.movies.year} onChange={this.handleChange} required />
+              </FormGroup>
 
-            <FormGroup>
-              <Label for='genre'>Genre</Label>
-              <Input type='select' name='genre' id='genre' value={this.state.movies.genre} onChange={this.handleChange} required multiple >
-                {
-                  LIST_GENRE.map((elt, index) => <option key={index} value={elt}>{elt}</option>)
-                }
-              </Input>
-            </FormGroup>
+              <FormGroup>
+                <Label for='runtime'>Durée</Label>
+                <Input type='number' name='runtime' id='runtime' placeholder='Durée' min='0' value={this.state.movies.runtime} onChange={this.handleChange} required />
+              </FormGroup>
 
-            <Button type='submit' block >
+              {
+                this.props.match.params.id === undefined &&
+                <FormGroup>
+                  <Label for='poster'>Affice</Label>
+                  <Input type='file' id='poster' placeholder='affiche' onChange={
+                    event => {
+                      let file = event.target.files[0]
+                      let data = this.state.movies
+                      data.poster = file
+                      this.setState({
+                        movies: data
+                      })
+                    }
+                  } required />
+                </FormGroup>
+              }
+
+              <FormGroup>
+                <Label for='description'>Description</Label>
+                <Input type='textarea' id='description' name='description' value={this.state.movies.description} onChange={this.handleChange} required />
+              </FormGroup>
+
+              <FormGroup>
+                <Label for='genre'>Genre</Label>
+                <Input type='select' name='genre' id='genre' value={this.state.movies.genre} onChange={this.handleChange} required multiple >
+                  {
+                    LIST_GENRE.map((elt, index) => <option key={index} value={elt}>{elt}</option>)
+                  }
+                </Input>
+              </FormGroup>
+
+              <Button type='submit' block >
           Enregistrer
-            </Button>
+              </Button>
 
-          </Form>
-        </Col>
-      </Row>
+            </Form>
+          </Col>
+        </Row>
       </div>
     )
   }

@@ -8,6 +8,8 @@ import Requests from '../utils/Requests'
 
 import AlertBanner from './AlertBanner'
 
+import MoviesForm from '../utils/MoviesForm'
+
 export default class DetailMovie extends Component {
   constructor (props) {
     super(props)
@@ -17,7 +19,7 @@ export default class DetailMovie extends Component {
         year: '',
         description: '',
         poster: '',
-        runtime: '' 
+        runtime: ''
       },
       alert: {
         visible: false,
@@ -25,6 +27,10 @@ export default class DetailMovie extends Component {
         status: null
       }
     }
+    this.fillFields = MoviesForm.fillFields.bind(this)
+    this.success = MoviesForm.success.bind(this)
+    this.echec = MoviesForm.echec.bind(this)
+    this.toggle = MoviesForm.toggle.bind(this)
   }
 
   componentDidMount () {
@@ -34,48 +40,6 @@ export default class DetailMovie extends Component {
       }
       )
       .catch(err => console.log(err))
-  }
-
-  fillFields (movies) {
-    this.setState({
-      movies: {
-        title: movies.title,
-        year: movies.year,
-        description: movies.description,
-        poster: movies.poster,
-        runtime: movies.runtime
-      }
-    })
-  }
-
-  success () {
-    this.setState({
-      alert: {
-        visible: true, 
-        message: 'Suppression réussie',
-        status: 'success'
-      }
-    })
-  }
-
-  echec (error) {
-    this.setState({
-      alert: {
-        visible: true,
-        message: error,
-        status: 'danger'
-      }
-    })
-  }
-
-  toggle () {
-    this.setState({
-      alert: {
-        viisble: false,
-        message: null,
-        status: null
-      }
-    })
   }
 
   deleteMovies () {
