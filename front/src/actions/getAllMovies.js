@@ -9,11 +9,11 @@ export const GET_ALL_MOVIES_FAILED = 'GET_ALL_MOVIES_FAILED'
 /**
  * getAllMovies
  *
- * @returns {object} return action property
+ * @returns {object} return type property
  */
 export const getAllMovies = () => {
   return {
-    action: GET_ALL_MOVIES
+    type: GET_ALL_MOVIES
   }
 }
 
@@ -21,11 +21,11 @@ export const getAllMovies = () => {
  * getAllMoviesSuccess
  *
  * @param {array} movies list of movies
- * @returns {object} return action property and an array of movies
+ * @returns {object} return type property and an array of movies
  */
 export const getAllMoviesSuccess = (movies) => {
   return {
-    action: GET_ALL_MOVIES_SUCCESS,
+    type: GET_ALL_MOVIES_SUCCESS,
     movies: movies
   }
 }
@@ -34,11 +34,11 @@ export const getAllMoviesSuccess = (movies) => {
  * getAllMoviesFailed
  *
  * @param {object} err err status and message
- * @returns {object} return action and error properties
+ * @returns {object} return type and error properties
  */
 export const getAllMoviesFailed = (err) => {
   return {
-    action: GET_ALL_MOVIES_FAILED,
+    type: GET_ALL_MOVIES_FAILED,
     error: err
   }
 }

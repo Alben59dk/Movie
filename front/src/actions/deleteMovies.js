@@ -9,11 +9,11 @@ export const DELETE_MOVIES_FAILED = 'DELETE_MOVIES_FAILED'
 /**
  * deleteMovies
  *
- * @returns {object} return action property
+ * @returns {object} return type property
  */
 export const deleteMovies = () => {
   return {
-    action: DELETE_MOVIES
+    type: DELETE_MOVIES
   }
 }
 
@@ -21,11 +21,11 @@ export const deleteMovies = () => {
  * deleteMoviesSuccess
  *
  * @param {string} id movies id to delete
- * @returns {object} return action and id properties
+ * @returns {object} return type and id properties
  */
 export const deleteMoviesSuccess = (id) => {
   return {
-    action: DELETE_MOVIES_SUCCESS,
+    type: DELETE_MOVIES_SUCCESS,
     id: id
   }
 }
@@ -34,11 +34,11 @@ export const deleteMoviesSuccess = (id) => {
  * deleteMoviesFailed
  *
  * @param {object} err err status and message
- * @returns {object} return action and error properties
+ * @returns {object} return type and error properties
  */
 export const deleteMoviesFailed = (err) => {
   return {
-    action: DELETE_MOVIES_FAILED,
+    type: DELETE_MOVIES_FAILED,
     error: err
   }
 }

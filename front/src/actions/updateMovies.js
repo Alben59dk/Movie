@@ -9,11 +9,11 @@ export const UPDATE_MOVIES_FAILED = 'UPDATE_MOVIES_FAILED'
 /**
  * updateMovies
  *
- * @returns {object} return action property
+ * @returns {object} return type property
  */
 export const updateMovies = () => {
   return {
-    action: UPDATE_MOVIES
+    type: UPDATE_MOVIES
   }
 }
 
@@ -21,11 +21,11 @@ export const updateMovies = () => {
  * updateMoviesSuccess
  *
  * @param {object} movies movies to update
- * @returns {object} return action and movies properties
+ * @returns {object} return type and movies properties
  */
 export const updateMoviesSuccess = (movies) => {
   return {
-    action: UPDATE_MOVIES_SUCCESS,
+    type: UPDATE_MOVIES_SUCCESS,
     movies: movies
   }
 }
@@ -34,11 +34,11 @@ export const updateMoviesSuccess = (movies) => {
  * updateMoviesFailed
  *
  * @param {object} error err status and message
- * @returns {object} return action and error properties
+ * @returns {object} return type and error properties
  */
 export const updateMoviesFailed = (error) => {
   return {
-    action: UPDATE_MOVIES_SUCCESS,
+    type: UPDATE_MOVIES_SUCCESS,
     error: error
   }
 }

@@ -9,11 +9,11 @@ export const CREATE_MOVIES_FAILED = 'CREATE_MOVIES_FAILED'
 /**
  * createMovies
  *
- * @returns {object} return action property
+ * @returns {object} return type property
  */
 export const createMovies = () => {
   return {
-    action: CREATE_MOVIES
+    type: CREATE_MOVIES
   }
 }
 
@@ -21,11 +21,11 @@ export const createMovies = () => {
  * createMoviesSuccess
  *
  * @param {object} movies movies to create
- * @returns {object} return action and movies properties
+ * @returns {object} return type and movies properties
  */
 export const createMoviesSuccess = (movies) => {
   return {
-    action: CREATE_MOVIES_SUCCESS,
+    type: CREATE_MOVIES_SUCCESS,
     movies: movies
   }
 }
@@ -34,11 +34,11 @@ export const createMoviesSuccess = (movies) => {
  * createMoviesFailed
  *
  * @param {object} error err status and message
- * @returns {object} return action and error properties
+ * @returns {object} return type and error properties
  */
 export const createMoviesFailed = (error) => {
   return {
-    action: CREATE_MOVIES_SUCCESS,
+    type: CREATE_MOVIES_SUCCESS,
     error: error
   }
 }
