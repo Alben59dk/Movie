@@ -37,7 +37,8 @@ export default class MovieCards extends Component {
             <CardBody>
               <CardTitle>{this.state.movies[j].title}</CardTitle>
               <CardSubtitle>Awards : {this.state.movies[j].awards}</CardSubtitle>
-              <CardText> Plot : {this.state.movies[j].plot}</CardText>
+              <br />
+              <CardText>Plot : {this.state.movies[j].plot}</CardText>
               <CardText>Actors : {this.state.movies[j].actors}</CardText>
               <CardText>Director : {this.state.movies[j].director}</CardText>
               <CardText>Genre : {this.state.movies[j].genre}</CardText>
