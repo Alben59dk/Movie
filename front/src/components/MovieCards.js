@@ -8,7 +8,6 @@ export default class MovieCards extends Component {
     this.state = {
       movies: []
     }
-
     this.CardsLoop = this.CardsLoop.bind(this)
   }
 
@@ -20,7 +19,6 @@ export default class MovieCards extends Component {
           movieTemp.push(res.data[i])
           this.setState({movies: movieTemp})
         }
-        console.log(this.state.movies)
       })
       .catch(err => {
         console.log(err.message.status)
