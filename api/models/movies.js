@@ -65,7 +65,8 @@ const moviesSchema = new mongoose.Schema({
   },
   boxOffice: {
     type: String,
-    required: true
+    required: true,
+    trim: true
   },
   production: {
     type: String,
