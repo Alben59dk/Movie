@@ -6,6 +6,8 @@ import CardMovie from './CardMovie'
 
 import Search from '../containers/Search'
 
+import Filter from '../containers/CategoriesList'
+
 export default class ListMovies extends Component {
   constructor (props) {
     super(props)
@@ -29,6 +31,7 @@ export default class ListMovies extends Component {
   render () {
     return (
       <Container fluid>
+        <Filter />
         <Search />
         <Row>
           {
