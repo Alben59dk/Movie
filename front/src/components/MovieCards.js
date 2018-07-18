@@ -10,13 +10,6 @@ export default class MovieCards extends Component {
     }
 
     this.CardsLoop = this.CardsLoop.bind(this)
-    this.handleClickInfo = this.handleClickInfo.bind(this)
-  }
-
-  toggle () {
-    this.setState({
-      modal: !this.state.modal
-    })
   }
 
   componentDidMount () {
@@ -38,14 +31,13 @@ export default class MovieCards extends Component {
     let renderingCards = []
     for (let j = 0; j < this.state.movies.length; j++) {
       renderingCards.push(
-        <Col lg={4}>
+        <Col lg={3}>
           <Card>
             <CardImg src={this.state.movies[j].poster} alt='posterImg' />
             <CardBody>
               <CardTitle>{this.state.movies[j].title}</CardTitle>
               <CardSubtitle>{this.state.movies[j].awards}</CardSubtitle>
               <CardText>{this.state.movies[j].plot}</CardText>
-              <Button onClick={this.toggle}>More Informations</Button>
             </CardBody>
           </Card>
         </Col>
