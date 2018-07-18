@@ -9,7 +9,7 @@ const morgan = require('morgan')
 const multer = require('multer')
 
 // Constantes API
-const MONGO_URI = 'mongodb://localhost:27017/checkpoint'
+const MONGO_URI = 'mongodb://localhost/checkpoint'
 const PORT = 8080
 
 // Middleware
@@ -20,13 +20,12 @@ app.use(morgan('dev'))
 // Mongoose
 mongoose.connect(MONGO_URI, err => {
   if (err) throw err
+  console.log('Success to connect DB')
 })
 
-app.get('/', (req, res, next) => {
-  res.status(200).json({
-    data: 'ok'
-  })
-})
+// Routes
+const movies = require('./routes/movies')
+app.use('/movie', movies)
 
 // notFound pages
 app.use((req, res, next) => {
