@@ -39,7 +39,7 @@ export default class Navbar extends Component {
         <Collapse isOpen={this.state.isOpen} navbar >
           <Nav className='ml-auto' navbar >
             <NavItem>
-              <NavLink tag={Link} to='/list'>Tous les films</NavLink>
+              <NavLink tag={Link} to='/'>Tous les films</NavLink>
             </NavItem>
             <NavItem>
               <NavLink tag={Link} to='/new'>Ajout</NavLink>
