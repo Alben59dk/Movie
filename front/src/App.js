@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
-import Carou from './components/Carousel'
+import Home from './components/Home'
 import NavBar from './components/NavBar'
 import MovieCards from './components/MovieCards'
 import MovieAdd from './components/MovieAdd'
@@ -13,7 +13,7 @@ class App extends Component {
         <div>
           <NavBar />
           <Switch>
-            <Route exact path='/' component={Carou} />
+            <Route exact path='/' component={Home} />
             <Route path='/movielist' component={MovieCards} />
             <Route path='/movieadd' component={MovieAdd} />
           </Switch>
