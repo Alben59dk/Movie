@@ -54,7 +54,7 @@ module.exports = class moviesController {
    */
   static delete (req, res, next) {
     Movies.findByIdAndRemove(req.params.id, (err, movie) => {
-      err ? next(err) : res.status(204)
+      err ? next(err) : res.sendStatus(204)
     })
   }
 
