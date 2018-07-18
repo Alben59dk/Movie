@@ -1,0 +1,17 @@
+.title {
+  margin-left: 18vw;
+  color: blue;
+}
+
+.subTitle {
+  margin-left: 28vw;
+  color: blue
+}
+
+.board {
+  text-align: center;
+  background-color: grey;
+  padding: 3%;
+  margin: 1%;
+  border-radius: 20px;
+}
