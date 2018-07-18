@@ -4,6 +4,8 @@ import { Container, Row, Col } from 'reactstrap'
 
 import CardMovie from './CardMovie'
 
+import Search from '../containers/Search'
+
 export default class ListMovies extends Component {
   componentDidMount () {
     this.props.getAllMovies()
@@ -12,13 +14,16 @@ export default class ListMovies extends Component {
   render () {
     return (
       <Container fluid>
+        <Search />
         <Row>
           {
             this.props.movies.map((film, index) => {
               return (
-                <Col xs={12} md={6} lg={3} key={index} >
-                  <CardMovie movies={film} />
-                </Col>
+                film.visibility && (
+                  <Col xs={12} md={6} lg={3} key={index} >
+                    <CardMovie movies={film} />
+                  </Col>
+                )
               )
             })
 
