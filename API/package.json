@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon ./bin/www"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.4",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
-    "moongoose": "0.0.5",
+    "mongoose": "^5.2.4",
     "nodemon": "^1.18.3"
   }
 }
