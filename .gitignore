@@ -1,0 +1,2 @@
+# exclude mac deletion files
+.DS_Store
