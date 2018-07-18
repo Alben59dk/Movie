@@ -51,4 +51,19 @@ export default class Requests {
       data: data
     })
   }
+
+  /**
+   * delete
+   *
+   * @static
+   * @param {string} url url target
+   * @returns {function} axios function override
+   */
+  static delete (url) {
+    return axios({
+      method: 'delete',
+      baseURL: API_URI,
+      url: url
+    })
+  }
 }
