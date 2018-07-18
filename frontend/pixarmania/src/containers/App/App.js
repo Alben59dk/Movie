@@ -1,4 +1,12 @@
+import React from 'react';
 
+import './App.css';
+import { pixar } from '../../constants';
 
+console.log(pixar);
 
-import { tweets } from '../../constants'
+const App = () => (
+  <h1>FILMS</h1>
+);
+
+export default App;
