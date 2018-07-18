@@ -1,6 +1,15 @@
 const express = require('express')
 const router = express.Router()
 const Movies = require('../controllers/movies')
+const multer = require('multer')
+const multerConfig = require('../config/multer')
+
+// Multer config parameters
+// Only accepts BMP, JPEG and PNG files
+const upload = multer({
+  storage: multerConfig.storage,
+  fileFilter: multerConfig.fileFilter
+})
 
 // ALL
 router.get('/all', (req, res, next) => {
@@ -18,7 +27,7 @@ router.get('/:id', (req, res, next) => {
 })
 
 // POST
-router.post('/create', (req, res, next) => {
+router.post('/create', upload.single('image'), (req, res, next) => {
   Movies.create(req, res, next)
 })
 

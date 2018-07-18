@@ -16,7 +16,7 @@ module.exports = class moviesController {
       title: req.body.title,
       year: req.body.year,
       genre: req.body.genre,
-      poster: req.body.poster,
+      poster: req.file.path,
       runtime: req.body.runtime
     })
 
