@@ -10,16 +10,17 @@ export default class FormMovies extends Component {
 
     this.state = {
       movies: {
-        title: undefined,
-        year: undefined,
-        runtime: undefined,
-        poster: undefined,
-        description: undefined,
-        genre: undefined
+        title: null,
+        year: null,
+        runtime: null,
+        poster: null,
+        description: null,
+        genre: null
       }
     }
 
     this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   /**
@@ -38,11 +39,16 @@ export default class FormMovies extends Component {
     })
   }
 
+  handleSubmit (event) {
+    event.preventDefault()
+    this.props.fetchMovies(this.state.movies)
+  }
+
   render () {
     return (
       <Row className='justify-content-center'>
         <Col xs={12} sm={8}>
-          <Form>
+          <Form onSubmit={this.handleSubmit} >
 
             <FormGroup>
               <Label for='title'>Title</Label>
@@ -73,12 +79,12 @@ export default class FormMovies extends Component {
               <Label for='genre'>Genre</Label>
               <Input type='select' name='genre' id='genre' multiple value={this.state.movies.genre} onChange={this.handleChange} >
                 {
-                  LIST_GENRE.map(elt => <option value={elt}>{elt}</option>)
+                  LIST_GENRE.map((elt, index) => <option key={index} value={elt}>{elt}</option>)
                 }
               </Input>
             </FormGroup>
 
-            <Button block >
+            <Button type='submit' block >
           Enregistrer
             </Button>
 
