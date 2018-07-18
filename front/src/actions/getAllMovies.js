@@ -53,7 +53,12 @@ export const fetchAllMovies = () => {
     dispatch(getAllMovies())
     return Requests.get('movie/all')
       .then(response => {
-        dispatch(getAllMoviesSuccess(response.data))
+        let movies = response.data
+        movies.forEach(elt => {
+          elt.visibility = true
+          return elt
+        })
+        dispatch(getAllMoviesSuccess(movies))
       })
       .catch(err => dispatch(getAllMoviesFailed(err.response)))
   }
