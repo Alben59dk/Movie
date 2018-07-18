@@ -16,7 +16,6 @@ class MovieController {
       boxOffice: params.boxOffice ? params.boxOffice : undefined,
       nationality: params.nationality ? params.nationality : undefined
     })
-
     movie.save((errS, obj) => {
       if (errS) {
         fs.unlink(image.path, (errU) => {
@@ -33,14 +32,13 @@ class MovieController {
             error: errS.message
           })
         } else {
-          res.state(503).json({
+          res.status(503).json({
             error: errS.message
           })
         }
       } else {
         let opts = [
-          { path: 'genres' },
-          { path: 'director' }
+          { path: 'genres' }
         ]
         MovieModel.populate(obj, opts, (errP, obj) => {
           if (errP) {
@@ -62,14 +60,17 @@ class MovieController {
       .sort('title')
       .exec(function (err, result) {
         if (err) {
+          console.log('TESSSSST');
           res.status(503).json({
             error: err.message
           })
           return
         }
         if (result) {
+          console.log('============');
           res.status(200).json(result)
         } else {
+          console.log('++++++++++++++++');
           res.status(200).json([])
         }
       })
