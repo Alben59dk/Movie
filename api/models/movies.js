@@ -1,41 +1,41 @@
 var mongoose = require('mongoose')
 
 const schema = new mongoose.Schema({
-  Name: {
+  name: {
     type: String,
     required: true,
     trim: true
   },
-  Author: {
+  author: {
     type: String,
     required: true,
     trim: true
   },
-  Actors: {
+  actors: {
     type: String,
     required: true,
     trim: true
   },
-  Image: {
+  image: {
     type: String,
     required: true
   },
-  Category: {
+  category: {
     type: String,
     required: true,
     enum: ['Animation', 'Drama', 'Comedy', 'Sci-Fi', 'Action', 'Documentary']
   },
-  ReleaseDate: Date,
-  Description: {
+  releaseDate: Date,
+  description: {
     type: String,
     required: true,
     trim: true
   },
-  Budget: {
+  budget: {
     type: Number,
     default: 0
   },
-  Evaluation: {
+  evaluation: {
     type: Number,
     default: 0
   }
