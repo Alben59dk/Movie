@@ -9,6 +9,8 @@ import {
   Collapse
 } from 'reactstrap'
 
+import { Link } from 'react-router-dom'
+
 export default class Navbar extends Component {
   constructor (props) {
     super(props)
@@ -32,18 +34,18 @@ export default class Navbar extends Component {
   render () {
     return (
       <NavBar color='light' light expand='md' >
-        <NavbarBrand href='/'>Your Ciné</NavbarBrand>
+        <NavbarBrand tag={Link} to='/'>Your Ciné</NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar >
           <Nav className='ml-auto' navbar >
             <NavItem>
-              <NavLink href='/list'>Tous les films</NavLink>
+              <NavLink tag={Link} to='/list'>Tous les films</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href='/new'>Ajout</NavLink>
+              <NavLink tag={Link} to='/new'>Ajout</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href='/edit'>Édition</NavLink>
+              <NavLink tag={Link} to='/edit'>Édition</NavLink>
             </NavItem>
           </Nav>
         </Collapse>
