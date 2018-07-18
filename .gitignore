@@ -1,2 +1,5 @@
 node_modules/
 jspm_packages/
+public/images/movies/
+public/images/categories/
+public/images/directors/
