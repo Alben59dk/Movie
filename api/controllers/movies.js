@@ -14,7 +14,7 @@ module.exports = class MoviesController {
       actors: req.actors,
       image: req.image,
       category: req.category,
-      releaseDate: req.date,
+      releaseYear: req.releaseYear,
       description: req.description,
       budget: req.budget,
       evaluation: req.evaluation
@@ -39,7 +39,7 @@ module.exports = class MoviesController {
       actors: req.actors,
       image: req.image,
       category: req.category,
-      releaseDate: req.date,
+      releaseYear: req.releaseYear,
       description: req.description,
       budget: req.budget,
       evaluation: req.evaluation
