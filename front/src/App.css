@@ -1,0 +1,49 @@
+@font-face {
+    font-family: Roboto;
+    src: url('https://fonts.googleapis.com/css?family=Roboto');
+}
+
+body {
+  font-family: Roboto !important;
+  }
+
+.addFilm h2{
+  text-align: center;
+  margin-top: 1em;
+  letter-spacing: 0.2em;
+}
+
+
+
+.addFilm p{
+  margin-top: 3em;
+  margin-left: 10%;
+  margin-bottom: 3em;
+}
+
+
+.allFilm h2{
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 2em;
+  letter-spacing: 0.2em;
+}
+
+.allFilm Table{
+  margin-bottom: 5em;
+}
+
+footer {
+  background: #303030;
+  color: white !important;
+  padding: 3em;
+}
+
+footer li{
+    list-style: none;
+}
+
+footer h3 {
+  margin-bottom: 1em;
+  text-decoration: underline;
+}
