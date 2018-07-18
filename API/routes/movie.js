@@ -15,7 +15,7 @@ MovieRouter.post('/', imageUpload, (req, res) => {
       req.body.plot &&
       req.body.genres &&
       req.body.director &&
-    //  req.body.released &&
+      req.body.released &&
       req.file
   ) {
     console.log('ayé')
