@@ -40,7 +40,7 @@ export default class ListMoviesCards extends Component {
               <CardTitle>{this.state.movies[j].name}</CardTitle>
               <CardText>Description du film : {this.state.movies[j].description}</CardText>
               <CardText>Acteurs : {this.state.movies[j].actors}</CardText>
-              <CardText>Auteur : {this.state.movies[j].author}</CardText>
+              <CardText>Réalisateur : {this.state.movies[j].author}</CardText>
               <CardText>Budget (€) : {this.state.movies[j].budget}</CardText>
               <CardText>Catégorie : {this.state.movies[j].category}</CardText>
               <CardText>Année de sortie : {this.state.movies[j].releaseYear}</CardText>
