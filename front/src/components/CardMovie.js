@@ -16,9 +16,9 @@ export default class CardMovie extends Component {
       <Card>
         <CardImg src='https://placeimg.com/640/480/any' />
         <CardBody>
-          <CardTitle>{this.state.title}</CardTitle>
-          <CardSubtitle>{this.state.year}</CardSubtitle>
-          <CardText>{this.state.description}</CardText>
+          <CardTitle>{this.props.movies.title}</CardTitle>
+          <CardSubtitle>{this.props.movies.year}</CardSubtitle>
+          <CardText>{this.props.movies.description}</CardText>
         </CardBody>
       </Card>
     )

@@ -14,10 +14,10 @@ export default class ListMovies extends Component {
       <Container fluid>
         <Row>
           {
-            this.props.movies.map(film => {
+            this.props.movies.map((film, index) => {
               return (
-                <Col xs={12} md={6} lg={3}>
-                  <CardMovie />
+                <Col xs={12} md={6} lg={3} key={index} >
+                  <CardMovie movies={film} />
                 </Col>
               )
             })
