@@ -17,7 +17,8 @@ module.exports = class moviesController {
       year: req.body.year,
       genre: req.body.genre,
       poster: req.file.path,
-      runtime: req.body.runtime
+      runtime: req.body.runtime,
+      description: req.body.description
     })
 
     newMovie.save((err, movie) => {
@@ -72,8 +73,8 @@ module.exports = class moviesController {
       title: req.body.title,
       year: req.body.year,
       genre: req.body.genre,
-      poster: req.body.poster,
-      runtime: req.body.runtime
+      runtime: req.body.runtime,
+      description: req.body.description
     }, {
       new: true,
       runValidators: true

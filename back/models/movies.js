@@ -22,6 +22,11 @@ const moviesSchema = new mongoose.Schema({
     required: false,
     trim: true
   },
+  description: {
+    type: String,
+    required: false,
+    trim: true
+  },
   runtime: {
     type: Number,
     require: true,
