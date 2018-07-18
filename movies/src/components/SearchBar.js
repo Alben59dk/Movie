@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Input} from 'reactstrap'
 
 export default class SearchBar extends Component {
     constructor(props) {
@@ -11,7 +12,7 @@ export default class SearchBar extends Component {
     render () {
         return ( 
             <div>
-            < input onChange = {this.handleChange.bind(this)}
+            < Input onChange = {this.handleChange.bind(this)}
                 placeholder = {this.state.placeholder} />
             </div>
         )
