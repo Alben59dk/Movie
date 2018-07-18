@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 
+const path = require('path')
+
 // Dependencies
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
@@ -27,6 +29,8 @@ mongoose.connect(MONGO_URI, err => {
 const movies = require('./routes/movies')
 app.use('/movie', movies)
 
+// Image load
+app.use('/public', express.static(path.join(__dirname, 'public')))
 // notFound pages
 app.use((req, res, next) => {
   let err = new Error('Not Found')
