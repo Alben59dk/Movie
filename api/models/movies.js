@@ -7,52 +7,42 @@ const moviesSchema = new mongoose.Schema({
     trim: true
   },
   year: {
-    type: Number,
-    required: true
+    type: Number
   },
   rated: {
     type: String,
-    required: true,
     trim: true
   },
   runtime: {
     type: String,
-    required: true,
     trim: true
   },
   genre: {
     type: String,
-    required: true,
     trim: true
   },
   director: {
     type: String,
-    required: true,
     trim: true
   },
   writer: {
     type: String,
-    required: true,
     trim: true
   },
   actors: {
     type: String,
-    required: true,
     trim: true
   },
   plot: {
     type: String,
-    required: true,
     trim: true
   },
   language: {
     type: String,
-    required: true,
     trim: true
   },
   awards: {
     type: String,
-    required: true,
     trim: true
   },
   poster: {
@@ -60,17 +50,14 @@ const moviesSchema = new mongoose.Schema({
     required: true
   },
   metascore: {
-    type: Number,
-    required: true
+    type: Number
   },
   boxOffice: {
     type: String,
-    required: true,
     trim: true
   },
   production: {
     type: String,
-    required: true,
     trim: true
   }
 })
