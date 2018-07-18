@@ -63,7 +63,7 @@ class AlloHeader extends Component {
           onExited={this.onExited}
           key={item.src}
         >
-          <img src={item.src} alt={item.altText} style={{maxWidth: '100%'}} />
+          <img className='carouselImage' src={item.src} alt={item.altText} />
           <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
         </CarouselItem>
       )
