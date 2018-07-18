@@ -20,7 +20,7 @@ export default class NavBar extends React.Component {
               <NavLink href='/movielist'>Movies</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href='/addmovie'>Adding a movie</NavLink>
+              <NavLink href='/movieadd'>Adding a movie</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href='/removemovie'>Removing a Movie</NavLink>
