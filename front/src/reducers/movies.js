@@ -10,6 +10,8 @@ import { UPDATE_MOVIES, UPDATE_MOVIES_SUCCESS, UPDATE_MOVIES_FAILED } from '../a
 
 import { SEARCH_MOVIES } from '../actions/searchMovies'
 
+import { FILTER } from '../actions/filtersMovies'
+
 let initialState = {
   error: null,
   isFetchting: false,
@@ -23,6 +25,14 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         movies: [ ...state.movies.map(film => {
           film.visibility = !!film.title.match(action.search)
+          return film
+        })
+        ]
+      })
+    case FILTER:
+      return Object.assign({}, state, {
+        movies: [ ...state.movies.map(film => {
+          film.visibility = !!film.genre.includes(action.filter)
           return film
         })
         ]
