@@ -34,4 +34,21 @@ export default class Requests {
       data: data
     })
   }
+
+  /**
+   * put
+   *
+   * @static
+   * @param {string} url url target
+   * @param {object} data data to send
+   * @returns {function} axios function override
+   */
+  static put (url, data) {
+    return axios({
+      method: 'put',
+      baseURL: API_URI,
+      url: url,
+      data: data
+    })
+  }
 }
