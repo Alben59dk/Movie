@@ -60,6 +60,7 @@ export default class Requests {
    * @returns {function} axios function override
    */
   static delete (url) {
+    console.log(url)
     return axios({
       method: 'delete',
       baseURL: API_URI,

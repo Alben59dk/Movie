@@ -46,15 +46,22 @@ export const deleteMoviesFailed = (err) => {
 /**
  * fetchMovies
  *
+ * @param {string} id movies id to delete
+ * @param {function} success callback on success
+ * @param {function} echec callback on echec
  * @returns {object} return data or err response
  */
-export const fetchMovies = (id) => {
+export const fetchMovies = (id, success, echec) => {
   return dispatch => {
     dispatch(deleteMovies())
     return Requests.delete(`movie/${id}`)
       .then(response => {
         dispatch(deleteMoviesSuccess(id))
+        success()
       })
-      .catch(err => dispatch(deleteMoviesFailed(err.response)))
+      .catch(err => {
+        dispatch(deleteMoviesFailed(err.response))
+        echec(err.response.statusText)
+      })
   }
 }

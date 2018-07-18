@@ -48,6 +48,8 @@ export const updateMoviesFailed = (error) => {
  *
  * @param {string} id movies id to update
  * @param {object} data data to update
+ * @param {function} success sucess callback
+ * @param {function} echec echec callback
  * @returns {object} return data or err response
  */
 export const fetchMovies = (id, data, success, echec) => {

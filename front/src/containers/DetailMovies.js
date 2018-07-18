@@ -15,7 +15,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   getMovies: (id) => dispatch(fetchMovies(id)),
-  deleteMovies: id => dispatch(deleteMovies(id))
+  deleteMovies: (id, success, echec) => dispatch(deleteMovies(id, success, echec))
 })
 
 export default connect(
