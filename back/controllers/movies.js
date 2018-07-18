@@ -82,4 +82,20 @@ module.exports = class moviesController {
         err ? next(err) : res.status(200).json(movie)
       })
   }
+
+  /**
+   * readAll
+   *
+   * @static
+   * @param {object} req request object
+   * @param {object} res response object
+   * @param {function} next error handler
+   *
+   * Will return 200 and movies array or 500
+   */
+  static readAll (req, res, next) {
+    Movies.find({}).exec((err, movies) => {
+      err ? next(err) : res.status(200).json(movies)
+    })
+  }
 }
