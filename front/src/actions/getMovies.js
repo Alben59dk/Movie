@@ -2,7 +2,7 @@ import Requests from '../utils/Requests'
 
 export const GET_MOVIES = 'GET_MOVIES'
 
-export const GET_MOVIES_SUCCES = 'GET_MOVIES_SUCCESS'
+export const GET_MOVIES_SUCCESS = 'GET_MOVIES_SUCCESS'
 
 export const GET_MOVIES_FAILED = 'GET_MOVIES_FAILED'
 
@@ -25,7 +25,7 @@ export const getMovies = () => {
  */
 export const getMoviesSuccess = (movies) => {
   return {
-    action: GET_MOVIES_SUCCES,
+    action: GET_MOVIES_SUCCESS,
     movies: movies
   }
 }
