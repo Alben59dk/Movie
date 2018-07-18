@@ -56,7 +56,9 @@ export default class ListMoviesCards extends Component {
     return (
       <Container fluid>
         <Row className='justfify-content-center'>
-          <h1 style={{margin: 'auto', padding: '2%'}}>Voici la liste des films contenus dans la base de données: </h1>
+          <Col xs='12'>
+            <h2 className='listTitle'>Voici la liste des films contenus dans la base de données: </h2>
+          </Col>
         </Row>
         <Row>
           {this.CardsLoop()}
