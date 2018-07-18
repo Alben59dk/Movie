@@ -1,31 +1,9 @@
-const express = require('express')
-const router = express.Router()
+var express = require('express')
+var router = express.Router()
 
-const Movies = require('../controllers/movies')
-
-// Get all movies
-router.get('/all', (req, res) => {
-  new Movies(req, res).getAll()
-})
-
-// Create a new movie
-router.post('/new', (req, res) => {
-  new Movies(req, res).create()
-})
-
-// Read a movie
-router.get('/:id', (req, res) => {
-  new Movies(req, res).read()
-})
-
-// Update a movie
-router.put('/:id', (req, res) => {
-  new Movies(req, res).update()
-})
-
-// Delete a movie
-router.delete('/:id', (req, res) => {
-  new Movies(req, res).delete()
+/* GET home page. */
+router.get('/', function (req, res, next) {
+  res.render('index', { title: 'Express' })
 })
 
 module.exports = router
