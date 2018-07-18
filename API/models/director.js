@@ -19,5 +19,5 @@ let directorSchema = new mongoose.Schema({
   }
 })
 
-let DirectorModel = mongoose.model('DirectorModel', directorSchema)
+let DirectorModel = mongoose.model('DirectorModel', directorSchema, 'director')
 module.exports = DirectorModel
