@@ -18,5 +18,7 @@ avatar: '',
 fullname: 'Monsters & Cie',
 content: 'La plus grande usine de traitement de cris de la ville',
 date: '20/03/2002'
-}
-]
+}];
+
+export default pixar;
+
