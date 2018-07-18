@@ -36,3 +36,6 @@ let movieSchema = new mongoose.Schema({
     required: false
   }
 })
+
+let MovieModel = mongoose.model('MovieModel', movieSchema)
+module.exports = MovieModel
