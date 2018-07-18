@@ -10,7 +10,7 @@ import Home from './components/Home'
 import AddMovieForm from './components/AddMovieForm'
 import MoviesList from './components/MoviesList'
 
-import NotFound from './Components/General/NotFound'
+import NotFound from './components/general/NotFound'
 
 import './App.css'
 import './styles/home.css'
