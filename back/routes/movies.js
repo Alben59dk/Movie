@@ -19,7 +19,7 @@ router.put('/:id', (req, res, next) => {
 
 // DELETE
 router.delete('/:id', (req, res, next) => {
-  Movies.delete()
+  Movies.delete(req, res, next)
 })
 
 // ALL

@@ -40,4 +40,20 @@ module.exports = class moviesController {
       err ? next(err) : res.status(200).json(movie)
     })
   }
+
+  /**
+   * delete
+   *
+   * @static
+   * @param {object} req request object
+   * @param {object} res response object
+   * @param {function} next error handler
+   *
+   * Will return 204 on success or 500
+   */
+  static delete (req, res, next) {
+    Movies.findByIdAndRemove(req.params.id, (err, movie) => {
+      err ? next(err) : res.status(204)
+    })
+  }
 }
