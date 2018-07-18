@@ -25,7 +25,10 @@ const schema = new mongoose.Schema({
     required: true,
     enum: ['Animation', 'Drama', 'Comedy', 'Sci-Fi', 'Action', 'Documentary']
   },
-  releaseDate: Date,
+  releaseYear: {
+    type: Number,
+    default: 0
+  },
   description: {
     type: String,
     required: true,
