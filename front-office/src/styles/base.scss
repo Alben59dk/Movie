@@ -358,6 +358,13 @@ $color-collection: (coral,orange,yellow,black,green,blue,grey,purple, red, white
     font-weight: 400;
 }
 
+@font-face {
+    font-family: 'roboto';
+    src: url('../fonts/Roboto-Black.ttf');
+    font-weight: 400;
+}
+
+
 
 .tengan {
     font-family: 'TenGan'
@@ -365,4 +372,8 @@ $color-collection: (coral,orange,yellow,black,green,blue,grey,purple, red, white
   
 .forder {
     font-family: 'FirstOrder'
+}
+
+.roboto {
+    font-family: 'roboto'
 }

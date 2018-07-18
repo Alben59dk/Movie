@@ -117,6 +117,9 @@ class Add extends Component {
                     <Col className={''}>
                         <Button color='black' type='submit' onClick={this.onSubmit.bind(this)}>Submit</Button>
                     </Col>
+                    <Col className={''}>
+                        <p className={'border-red brad-5 p-3'}><span className={'font-b'}><i className={'triangle exclamation icon'}></i>Note:</span> No confirmation message will appear once you hit submit. If you did your part and completed everything you needed to complete then don't worry, I'm a professional developper, i got you covered. Nezzar</p>
+                    </Col>
                 </Row>
                 </div>
             </Container>

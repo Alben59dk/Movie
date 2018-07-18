@@ -7,6 +7,7 @@ import axios from 'axios'
 import nino from '../images/nino.jpg'
 import homer from '../images/homer.gif'
 
+import '../styles/home.css'
 
 class Home extends Component {
     constructor(props){
@@ -19,7 +20,7 @@ class Home extends Component {
     componentWillMount(){
         axios({
             method: 'GET',
-            url: 'http://localhost:3005/movies'
+            url: 'http://localhost:3005/movies/random'
         })
         .then((res) => {
             this.setState({
@@ -38,30 +39,26 @@ class Home extends Component {
         let movies = this.state.movies
         console.log(movies)
         return (
-            <Container className={'bg-white mT-5 brad-17'} >
+            <Container className={'bg-white mT-5 roboto brad-17'} >
                 <Row className={'txtcenter'}>
-                    <h1 className={'w100p color-pink'}>WECHCINEMAs INC.</h1>
+                    <h1 className={'w100p font-l title-spacing'}>NEZZCINEMA.COM</h1>
                 </Row>
-                <Row className={'pT-5 pB-5'}>
-                    <Col sm='7' className={''}>
-                        <Row className={''}>
-                            <Col sm='5' className={'vCenter'}>
-                                <Image className={''} src={nino} size='small' circular />
-                            </Col>
-                            <Col sm='7' className={'vCenter'}>
-                            <div>
-                                <h2 className={'txtcenter'}>Nezzar KEFIF</h2>
-                                <h4 className={'font-l txtcenter'}>Professional Developper</h4>
-                            </div>
-                            </Col>
-                        </Row>
+                <Row className={'pT-5 pB-5 border-black brad-4 bg-lgrey'}>
+                    <Col sm='4' className={'vCenter '}>
+                        <Image className={''} src={nino} size='small' circular />
                     </Col>
-                    <Col sm='5' className={''}>
+                    <Col sm='4' className={'vCenter '}>
+                    <div>
+                        <h2 className={'txtcenter'}>Nezzar KEFIF</h2>
+                        <h4 className={'font-l txtcenter'}>Professional Developper</h4>
+                    </div>
+                    </Col>
+                    <Col sm='4' className={' vCenter'}>
                         <Image className={''} src={homer} size='small' circular />
                     </Col>
                 </Row>
                 <Divider/>
-                <h1 className={'txtcenter color-pink'}$><i className='hand point down outline icon'></i>COOL MOVIES RIGHT NOW<i className='hand point down outline icon'></i></h1>
+                <h1 className={'txtcenter'}>4 Movies you should or shouln't watch today</h1>
                 <Divider/>
                 <Row className={''}>
                 {

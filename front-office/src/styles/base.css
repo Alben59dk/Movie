@@ -4869,8 +4869,16 @@
   src: url("../fonts/firstorder.ttf");
   font-weight: 400; }
 
+@font-face {
+  font-family: 'roboto';
+  src: url("../fonts/Roboto-Black.ttf");
+  font-weight: 400; }
+
 .tengan {
   font-family: 'TenGan'; }
 
 .forder {
   font-family: 'FirstOrder'; }
+
+.roboto {
+  font-family: 'roboto'; }

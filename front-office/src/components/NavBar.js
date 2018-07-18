@@ -9,6 +9,7 @@ import Home from '../components/Home'
 import Add from '../components/Add'
 import List from '../components/List'
 import Remove from '../components/Remove'
+import Footer from '../components/Footer'
 
 import '../styles/navbar.css'
 
@@ -30,11 +31,11 @@ export default class Example extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <div className={' bg-black'}>
+        <div className={''}>
 
         <Navbar className={'zindex-2'} color="light" light expand="md">
           <NavbarBrand>
-            <NavLink tag={ Link } to='/'>WechCinéma</NavLink>
+            <NavLink tag={ Link } to='/'>NEZZCINEMA</NavLink>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
@@ -65,6 +66,7 @@ export default class Example extends React.Component {
             <Route  path='/list' component={List} />
             <Route path='/remove' component={Remove} />
         </Switch>
+        <Footer/>
         </div>
       </BrowserRouter>
     );
