@@ -2,7 +2,7 @@ import Requests from '../utils/Requests'
 
 export const GET_ALL_MOVIES = 'GET_ALL_MOVIES'
 
-export const GET_ALL_MOVIES_SUCCES = 'GET_ALL_MOVIES_SUCCESS'
+export const GET_ALL_MOVIES_SUCCESS = 'GET_ALL_MOVIES_SUCCESS'
 
 export const GET_ALL_MOVIES_FAILED = 'GET_ALL_MOVIES_FAILED'
 
@@ -25,7 +25,7 @@ export const getAllMovies = () => {
  */
 export const getAllMoviesSuccess = (movies) => {
   return {
-    action: GET_ALL_MOVIES_SUCCES,
+    action: GET_ALL_MOVIES_SUCCESS,
     movies: movies
   }
 }

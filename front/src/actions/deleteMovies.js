@@ -2,7 +2,7 @@ import Requests from '../utils/Requests'
 
 export const DELETE_MOVIES = 'DELETE_MOVIES'
 
-export const DELETE_MOVIES_SUCCES = 'DELETE_MOVIES_SUCCESS'
+export const DELETE_MOVIES_SUCCESS = 'DELETE_MOVIES_SUCCESS'
 
 export const DELETE_MOVIES_FAILED = 'DELETE_MOVIES_FAILED'
 
@@ -25,7 +25,7 @@ export const deleteMovies = () => {
  */
 export const deleteMoviesSuccess = (id) => {
   return {
-    action: DELETE_MOVIES_SUCCES,
+    action: DELETE_MOVIES_SUCCESS,
     id: id
   }
 }
