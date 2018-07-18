@@ -11,20 +11,19 @@ MovieRouter.get('/', (req, res) => {
 })
 
 MovieRouter.post('/', imageUpload, (req, res) => {
-  if (req.body.title &&
-      req.body.plot &&
-      req.body.genres &&
-      req.body.director &&
-      req.body.released &&
-      req.file
+  if (req.body.title
   ) {
-    console.log('ayé')
     MovieController.addNew(req, res)
   } else {
+    console.log(req.body)
     res.status(400).json({
       error: 'Il te manque des infos poto'
     })
   }
+})
+
+MovieRouter.delete('/:id', (req, res) => {
+  MovieController.deleteOne(req.params.id, res)
 })
 
 module.exports = MovieRouter
