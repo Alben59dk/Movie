@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
-import { Row, Col, Button } from 'reactstrap'
+import { Row, Col, Button, NavLink } from 'reactstrap'
+
+import { NavLink as RRNavLink } from 'react-router-dom'
 
 import Requests from '../utils/Requests'
 
@@ -45,13 +47,13 @@ export default class DetailMovie extends Component {
       <div>
         <Row className='justify-content-center'>
           <Col xs={12} lg={8} >
-            <img src='https://placeimg.com/640/480/any' className='img-fluid' alt='Poster' />
+            <img src={`http://localhost:8080/${this.state.movies.poster}`} className='img-fluid' alt='Poster' />
           </Col>
         </Row>
         <Row>
           <Col xs={12} lg={9} >
             <h2 className='text-center'>{this.state.movies.title}</h2>
-            <ul>
+            <ul className='list-unstyled'>
               <li> produit en : {this.state.movies.year} </li>
               <li> durée : {this.state.movies.runtime} </li>
               <li> genre : {this.state.movies.genre} </li>
@@ -60,8 +62,13 @@ export default class DetailMovie extends Component {
           </Col>
         </Row>
         <Row>
-          <Col>
+          <Col xs={6} >
             <Button block onClick={this.props.deleteMovies.bind(this, this.props.match.params.id)}>Supprimer le film</Button>
+          </Col>
+          <Col xs={6}>
+            <NavLink to={`/edit/${this.props.match.params.id}`} tag={RRNavLink} >
+              <Button block>Editer</Button>
+            </NavLink>
           </Col>
         </Row>
       </div>

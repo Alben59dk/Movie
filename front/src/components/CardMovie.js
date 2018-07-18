@@ -1,24 +1,24 @@
 import React, { Component } from 'react'
 
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap'
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle, Button, NavLink } from 'reactstrap'
+
+import { NavLink as RRNavLink } from 'react-router-dom'
 
 export default class CardMovie extends Component {
   constructor (props) {
     super(props)
-    this.state = {
-      title: 'la momie',
-      year: 2001,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'
-    }
   }
+
   render () {
     return (
       <Card>
-        <CardImg src='https://placeimg.com/640/480/any' />
+        <CardImg src={`http://localhost:8080/${this.props.movies.poster}`} />
         <CardBody>
-          <CardTitle>{this.props.movies.title}</CardTitle>
-          <CardSubtitle>{this.props.movies.year}</CardSubtitle>
-          <CardText>{this.props.movies.description}</CardText>
+          <CardTitle className='text-center'>{this.props.movies.title}</CardTitle>
+          <CardSubtitle className='text-center'>{this.props.movies.year}</CardSubtitle>
+          <NavLink to={`/movie/${this.props.movies._id}`} tag={RRNavLink} >
+            <Button block >Détails</Button>
+          </NavLink>
         </CardBody>
       </Card>
     )
