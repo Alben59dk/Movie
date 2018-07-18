@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Col, Row } from 'reactstrap'
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Col, Row } from 'reactstrap'
 import axios from 'axios'
 
 export default class MovieCards extends Component {
@@ -36,8 +36,17 @@ export default class MovieCards extends Component {
             <CardImg src={this.state.movies[j].poster} alt='posterImg' />
             <CardBody>
               <CardTitle>{this.state.movies[j].title}</CardTitle>
-              <CardSubtitle>{this.state.movies[j].awards}</CardSubtitle>
-              <CardText>{this.state.movies[j].plot}</CardText>
+              <CardSubtitle>Awards : {this.state.movies[j].awards}</CardSubtitle>
+              <CardText> Plot : {this.state.movies[j].plot}</CardText>
+              <CardText>Actors : {this.state.movies[j].actors}</CardText>
+              <CardText>Director : {this.state.movies[j].director}</CardText>
+              <CardText>Genre : {this.state.movies[j].genre}</CardText>
+              <CardText>Language : {this.state.movies[j].language}</CardText>
+              <CardText>Metascore : {this.state.movies[j].metascore}</CardText>
+              <CardText>Production : {this.state.movies[j].production}</CardText>
+              <CardText>Rated : {this.state.movies[j].rated}</CardText>
+              <CardText>Runtime : {this.state.movies[j].runtime}</CardText>
+              <CardText>Year : {this.state.movies[j].year}</CardText>
             </CardBody>
           </Card>
         </Col>
