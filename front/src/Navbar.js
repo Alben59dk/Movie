@@ -7,7 +7,6 @@ import {
   Nav,
   NavItem,
   NavLink } from 'reactstrap'
-import {Link} from 'react-router-dom'
 
 export default class Example extends React.Component {
   constructor (props) {
@@ -32,9 +31,7 @@ export default class Example extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className='mr-auto' navbar>
               <NavItem>
-                <Link to='/'>
-                  <NavLink>Home</NavLink>
-                </Link>
+                <NavLink href='/'>Home</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href='/add'>ajouter un film</NavLink>

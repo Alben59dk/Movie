@@ -6,6 +6,15 @@
 body {
   font-family: Roboto !important;
   }
+Table {
+  cursor: pointer;
+}
+.loop {
+  text-align: center;
+  padding: 4em;
+  margin-bottom: 4em;
+  margin-top: 2em;
+}
 
 .addFilm h2{
   text-align: center;
@@ -13,11 +22,15 @@ body {
   letter-spacing: 0.2em;
 }
 
-
+.borderloop {
+  padding-top: 20px;
+  border: dashed 1px #303030;
+  height: 100%;
+}
 
 .addFilm p{
   margin-top: 3em;
-  margin-left: 10%;
+  margin-left: 12%;
   margin-bottom: 3em;
 }
 
@@ -28,9 +41,35 @@ body {
   margin-bottom: 2em;
   letter-spacing: 0.2em;
 }
+.header{
+  width: 100%;
+  height: 400px;
+  background-color: #303030;
+}
+.header h1{
+  color: white;
+  text-align: center;
+  padding-top: 7%;
+  font-size: 130px;
+}
+.allFilm h4{
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 2em;
+  letter-spacing: 0.2em;
+}
 
 .allFilm Table{
   margin-bottom: 5em;
+}
+.loopinfo{
+  width: 100%;
+  text-align: center !important;
+}
+.loopinfo h2{
+  text-align: center !important;
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
 
 footer {

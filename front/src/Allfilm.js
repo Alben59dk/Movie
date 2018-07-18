@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Table, Col, Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap'
+import { Table, Col, Modal, ModalHeader, ModalBody } from 'reactstrap'
 
 export default class Navbar extends Component {
   constructor (props) {
@@ -11,6 +11,18 @@ export default class Navbar extends Component {
     }
     this.loop = this.loop.bind(this)
     this.toggle = this.toggle.bind(this)
+  }
+
+  toggleinfo (index) {
+    this.setState({
+      modal: !this.state.modal,
+      name: this.state.data[index].name,
+      author: this.state.data[index].author,
+      image: this.state.data[index].image,
+      year: this.state.data[index].year,
+      description: this.state.data[index].description,
+      categorie: this.state.data[index].categorie
+    })
   }
 
   toggle () {
@@ -29,23 +41,16 @@ export default class Navbar extends Component {
 
   loop () {
     let render = []
+    let index = -1
     for (var i = 0; i < this.state.data.length; i++) {
+      index += 1
       render.push(
-        <tr onClick={this.toggle.bind(this, i)}>
+        <tr onClick={this.toggleinfo.bind(this, index)}>
           <td>{this.state.data[i].name}</td>
           <td>{this.state.data[i].year}</td>
           <td>{this.state.data[i].categorie}</td>
-          <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-            <ModalHeader toggle={this.toggle}>{this.state.data[i].name}</ModalHeader>
-            <ModalBody>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </ModalBody>
-            <ModalFooter>
-              <Button color='primary' onClick={this.toggle}>Do Something</Button>{' '}
-              <Button color='secondary' onClick={this.toggle}>Cancel</Button>
-            </ModalFooter>
-          </Modal>
         </tr>
+
       )
     }
     return render
@@ -56,7 +61,7 @@ export default class Navbar extends Component {
       <section className='allFilm'>
         <h2>Tableau de tous les films présent dans notre base</h2>
         <Col sm={{size: 6, offset: 3}}>
-          <Table hover>
+          <Table hover className='table'>
             <thead>
               <tr>
                 <th>Name</th>
@@ -69,6 +74,17 @@ export default class Navbar extends Component {
             </tbody>
           </Table>
         </Col>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+          <ModalHeader toggle={this.toggle}>{this.state.name}</ModalHeader>
+          <ModalBody>
+            <img src={this.state.image} />
+            <p>{this.state.author}</p>
+            <p>{this.state.year}</p>
+            <p>{this.state.categorie}</p>
+            <p>{this.state.description}</p>
+          </ModalBody>
+        </Modal>
+        <h4>n&apos;hesiter pas à enrichir notre base de donées en ajoutant d'autre film</h4>
       </section>
     )
   }
