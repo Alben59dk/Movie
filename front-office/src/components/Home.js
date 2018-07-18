@@ -14,10 +14,10 @@ class Home extends Component {
     return (
       <Container>
         <Row>
-          <h1 style={{textAlign: 'center', margin: 'auto', padding: '5%'}}> Bienvenue sur le CinéWild! </h1>
+          <h1 className='welcomeText'> Bienvenue sur le CinéWild! </h1>
         </Row>
         <Row>
-          <Col xs={12} lg={8} style={{textAlign: 'center', margin: 'auto', paddingBottom: '5%'}}>
+          <Col xs={12} lg={8} className='welcomeSubtext'>
             <h3> Ce site a été construit avec amour dans le cadre du dernier checkpoint, pour compléter et consulter une liste de films créée de toutes pièces dans une base de données de qualité Bangladesh. </h3>
             <p>P.S. Les budgets évoqués ne sont pas réels, c&apos;est juste pour la RIGOLADE. AHAH.</p>
           </Col>
