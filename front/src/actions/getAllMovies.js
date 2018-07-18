@@ -1,3 +1,5 @@
+import Requests from '../utils/Requests'
+
 export const GET_ALL_MOVIES = 'GET_ALL_MOVIES'
 
 export const GET_ALL_MOVIES_SUCCES = 'GET_ALL_MOVIES_SUCCESS'
@@ -38,5 +40,21 @@ export const getAllMoviesFailed = (err) => {
   return {
     action: GET_ALL_MOVIES_FAILED,
     error: err
+  }
+}
+
+/**
+ * fetchAllMovies
+ *
+ * @returns {object} return data or err response
+ */
+export const fetchAllMovies = () => {
+  return dispatch => {
+    dispatch(getAllMovies())
+    return Requests.get('movie/all')
+      .then(response => {
+        dispatch(getAllMoviesSuccess(response.data))
+      })
+      .catch(err => dispatch(getAllMoviesFailed(err.response)))
   }
 }
