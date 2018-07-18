@@ -10,12 +10,14 @@ export default class NotFound extends Component {
     return (
       <div>
         <Container fluid>
-          <Row className='NoWay'>
-            <Col xs='12' md='12'>
+          <Row>
+            <Col xs='12' md='6' className='NoWay'>
               <h1>Erreur</h1>
               <img src={NotFoundLogo} alt='Errorlogo' className='error' />
             </Col>
-            <Col xs='12' md='12'>
+          </Row>
+          <Row>
+            <Col xs='12' md='6' className='NoWay'>
               <h3> Ooooouuuuups, la page demandée n&apos;existe pas</h3>
             </Col>
           </Row>
