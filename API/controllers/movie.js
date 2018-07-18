@@ -54,6 +54,26 @@ class MovieController {
       }
     })
   }
+
+  static findAll (req, res) {
+    MovieModel.find({})
+      .populate('director')
+      .populate('genres')
+      .sort('title')
+      .exec(function (err, result) {
+        if (err) {
+          res.status(503).json({
+            error: err.message
+          })
+          return
+        }
+        if (result) {
+          res.status(200).json(result)
+        } else {
+          res.status(200).json([])
+        }
+      })
+  }
 }
 
 module.exports = MovieController
