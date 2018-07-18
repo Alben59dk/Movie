@@ -120,7 +120,7 @@ export default class FormMovies extends Component {
 
             <FormGroup>
               <Label for='genre'>Genre</Label>
-              <Input type='select' name='genre' id='genre' value={this.state.movies.genre} onChange={this.handleChange} required >
+              <Input type='select' name='genre' id='genre' value={this.state.movies.genre} onChange={this.handleChange} required multiple >
                 {
                   LIST_GENRE.map((elt, index) => <option key={index} value={elt}>{elt}</option>)
                 }
