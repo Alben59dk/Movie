@@ -51,7 +51,7 @@ export const deleteMoviesFailed = (err) => {
 export const fetchMovies = (id) => {
   return dispatch => {
     dispatch(deleteMovies())
-    return Requests.delet(`movie/${id}`)
+    return Requests.delete(`movie/${id}`)
       .then(response => {
         dispatch(deleteMoviesSuccess(id))
       })
