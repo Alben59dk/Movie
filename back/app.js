@@ -17,6 +17,11 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(morgan('dev'))
 
+// Mongoose
+mongoose.connect(MONGO_URI, err => {
+  if (err) throw err
+})
+
 app.get('/', (req, res, next) => {
   res.status(200).json({
     data: 'ok'
