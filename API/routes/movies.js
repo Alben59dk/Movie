@@ -1,8 +1,19 @@
 const express = require('express')
-const moviesRouter = express.Router()
+const MovieController = require('../controllers/movies')
+const MovieRouter = express.Router()
 
-moviesRouter.get('/', function (req, res, next) {
-  res.send('respond with a resource')
+MovieRouter.get('/', (req, res) => {
+  MovieController.findAll(res)
 })
 
-module.exports = moviesRouter
+MovieRouter.post('/addMovie', (req, res) => {
+  if (req.body.name && req.body.categorie && req.body.director && req.body.realise_date) {
+    MovieController.addOne(req, res)
+  } else {
+    res.status(400).json({
+      error: 'missing arguments'
+    })
+  }
+})
+
+module.exports = MovieRouter
