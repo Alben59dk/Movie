@@ -37,10 +37,6 @@ const schema = new mongoose.Schema({
   budget: {
     type: Number,
     default: 0
-  },
-  evaluation: {
-    type: Number,
-    default: 0
   }
 })
 

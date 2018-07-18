@@ -7,20 +7,18 @@ module.exports = class MoviesController {
   }
 
   create () {
-    const req = this.req.body
-    let movie = new Movies({
-      name: req.name,
-      author: req.author,
-      actors: req.actors,
-      image: req.image,
-      category: req.category,
-      releaseYear: req.releaseYear,
-      description: req.description,
-      budget: req.budget,
-      evaluation: req.evaluation
+    let movies = new Movies({
+      name: this.req.body.name,
+      author: this.req.body.author,
+      actors: this.req.body.actors,
+      image: this.req.body.image,
+      category: this.req.body.category,
+      releaseYear: this.req.body.releaseYear,
+      description: this.req.body.description,
+      budget: this.req.body.budget
     })
 
-    movie.save((err, document) => {
+    movies.save((err, document) => {
       err ? this.res.status(500).json({error: err.message}) : this.res.status(201).json(document)
     })
   }
@@ -32,17 +30,15 @@ module.exports = class MoviesController {
   }
 
   update () {
-    const req = this.req.body
     Movies.findByIdAndUpdate(this.req.params.id, {
-      name: req.name,
-      author: req.author,
-      actors: req.actors,
-      image: req.image,
-      category: req.category,
-      releaseYear: req.releaseYear,
-      description: req.description,
-      budget: req.budget,
-      evaluation: req.evaluation
+      name: this.req.body.name,
+      author: this.req.body.author,
+      actors: this.req.body.actors,
+      image: this.req.body.image,
+      category: this.req.body.category,
+      releaseYear: this.req.body.releaseYear,
+      description: this.req.body.description,
+      budget: this.req.body.budget
     }, (err, movie) => {
       err ? this.res.status(500).json({error: err.message}) : this.res.status(200).json(movie)
     })
