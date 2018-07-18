@@ -62,15 +62,7 @@ export default class Navbar extends Component {
     state[field] = event.target.value
     this.setState({movie: state})
     console.log(this.state.movie.categorie)
-    let render = []
-
-    for (var i = 0; i < this.state.data.length; i++) {
-      if (this.state.movie.categorie === this.state.data[i].categorie) {
-        console.log(this.state.data[i].categorie)
-        render.push(this.state.data[i])
-      }
-    }
-    this.setState({data: render})
+    this.setState({data: this.state.data.filter(data => data.categorie === this.state.movie.categorie)})
   }
 
   componentDidMount () {
