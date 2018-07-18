@@ -1,16 +1,41 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Table, Col, Modal, ModalHeader, ModalBody } from 'reactstrap'
+import { Table, Col, Modal, ModalHeader, ModalBody, Label, Input } from 'reactstrap'
+
+const sortDateDesc = (events, field) => {
+  return events.sort((a, b) => {
+    let A = a[ field ]
+    let B = b[ field ]
+    return A > B ? -1
+      : A < B ? 1 : 0
+  })
+}
+
+const sortDateAsc = (events, field) => {
+  return events.sort((a, b) => {
+    let A = a[ field ]
+    let B = b[ field ]
+    return A < B ? -1
+      : A > B ? 1 : 0
+  })
+}
 
 export default class Navbar extends Component {
   constructor (props) {
     super(props)
     this.state = {
       data: '',
-      modal: false
+      hello: '',
+      modal: false,
+      date: null,
+      movie: {
+        categorie: ''
+      }
     }
     this.loop = this.loop.bind(this)
     this.toggle = this.toggle.bind(this)
+    this.filterbydate = this.filterbydate.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   toggleinfo (index) {
@@ -31,11 +56,30 @@ export default class Navbar extends Component {
     })
   }
 
+  handleChange (event) {
+    let state = this.state.movie
+    let field = event.target.name
+    state[field] = event.target.value
+    this.setState({movie: state})
+    console.log(this.state.movie.categorie)
+    let render = []
+
+    for (var i = 0; i < this.state.data.length; i++) {
+      if (this.state.movie.categorie === this.state.data[i].categorie) {
+        console.log(this.state.data[i].categorie)
+        render.push(this.state.data[i])
+      }
+    }
+    this.setState({data: render})
+  }
+
   componentDidMount () {
     axios.get(`http://localhost:3000/movie/`)
       .then(res => {
         const movie = res.data
-        this.setState({data: movie})
+        this.setState({
+          data: movie
+        })
       })
   }
 
@@ -56,16 +100,37 @@ export default class Navbar extends Component {
     return render
   }
 
+  filterbydate () {
+    if (this.state.date === 'asc') {
+      this.setState({data: sortDateDesc(this.state.data, 'year'), date: 'desc'})
+    } else {
+      this.setState({data: sortDateAsc(this.state.data, 'year'), date: 'asc'})
+    }
+  }
+
   render () {
     return (
       <section className='allFilm'>
         <h2>Tableau de tous les films présent dans notre base</h2>
+        <Col sm='3'>
+          <Label>categorie<span className='asterisk'>*</span></Label>
+          <Input type='select' name='categorie' id='exampleSelect' onChange={this.handleChange}>
+            <option>{' '}</option>
+            <option>Action</option>
+            <option>Comedie</option>
+            <option>Animation</option>
+            <option>Science-fiction</option>
+            <option>Porn</option>
+            <option>Horreur</option>
+            <option>Aventure</option>
+          </Input>
+        </Col>
         <Col sm={{size: 6, offset: 3}}>
           <Table hover className='table'>
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Year</th>
+                <th onClick={this.filterbydate}>Year</th>
                 <th>categorie</th>
               </tr>
             </thead>
