@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
+import { Container } from 'reactstrap'
+import { BrowserRouter, Route } from 'react-router-dom'
 
 // CSS
 import './App.css'
@@ -11,6 +12,7 @@ import Footer from './components/Footer'
 
 // Containers
 import ListMovies from './containers/ListMovies'
+import FormMovies from './containers/FormMovies'
 
 // Redux logic
 import { Provider } from 'react-redux'
@@ -36,11 +38,17 @@ class App extends Component {
   render () {
     return (
       <Provider store={store}>
-        <div>
-          <Navbar />
-          <ListMovies />
-          <Footer />
-        </div>
+        <BrowserRouter>
+          <Container fluid >
+            <Navbar />
+
+            <Route exact path='/' component={ListMovies} />
+            <Route exact path='/new' component={FormMovies} />
+            <Route exact path='/edit' component={FormMovies} />
+
+            <Footer />
+          </Container>
+        </BrowserRouter>
       </Provider>
     )
   }
