@@ -1,5 +1,5 @@
 import React from 'react'
-import {Container, Col, Row, Button, Form, FormGroup, Label, Input, FormText} from 'reactstrap'
+import {Container, Col, Row, Button, Form, FormGroup, Label, Input, FormText, Alert} from 'reactstrap'
 import axios from 'axios'
 
 export default class AddMovie extends React.Component {
@@ -11,9 +11,11 @@ export default class AddMovie extends React.Component {
         director: '',
         categorie: '',
         realise_date: '',
-        active: true
+        img: '',
+        active: false
       },
-      isSubmitted: undefined
+      isSubmitted: undefined,
+      visible: true
     }
     this.handleText = this.handleText.bind(this)
     this.handleClick = this.handleClick.bind(this)
@@ -40,7 +42,6 @@ export default class AddMovie extends React.Component {
       })
   }
 
-
   componentDidUpdate () {
     console.log(this.state.MovieInfo)
   }
@@ -56,6 +57,10 @@ export default class AddMovie extends React.Component {
             <FormGroup>
               <Label for='exampleText'>Titre</Label>
               <Input type='textarea' name='name' onChange={this.handleText} id='exampleText' />
+            </FormGroup>
+            <FormGroup>
+              <Label for='exampleText'>Url D'Image</Label>
+              <Input type='textarea' name='img' onChange={this.handleText} id='exampleText' />
             </FormGroup>
             <FormGroup>
               <Label for='exampleText'>Realisateur</Label>

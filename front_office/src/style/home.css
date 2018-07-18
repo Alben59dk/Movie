@@ -15,3 +15,7 @@
   margin: 1%;
   border-radius: 20px;
 }
+
+li {
+  list-style-type: none;
+}
