@@ -22,7 +22,8 @@ class MovieController {
       name: req.body.name,
       categorie: req.body.categorie,
       director: req.body.director,
-      realise_date: req.body.realise_date
+      realise_date: req.body.realise_date,
+      img: req.body.img
     })
     MovieInfo.save(function (err, movie) {
       if (err) {
