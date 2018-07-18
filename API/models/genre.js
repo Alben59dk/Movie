@@ -12,5 +12,5 @@ let genreSchema = new mongoose.Schema({
   }
 })
 
-let GenreModel = mongoose.model('GenreModel', genreSchema)
+let GenreModel = mongoose.model('GenreModel', genreSchema, 'genres')
 module.exports = GenreModel
