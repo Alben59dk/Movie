@@ -14,7 +14,7 @@ router.post('/create', (req, res, next) => {
 
 // PUT
 router.put('/:id', (req, res, next) => {
-  Movies.update()
+  Movies.update(req, res, next)
 })
 
 // DELETE

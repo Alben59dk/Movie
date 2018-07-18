@@ -56,4 +56,30 @@ module.exports = class moviesController {
       err ? next(err) : res.status(204)
     })
   }
+
+  /**
+   * update
+   *
+   * @static
+   * @param {object} req request object
+   * @param {object} res response object
+   * @param {function} next error handler
+   *
+   * Will return 201 and the new movie updated or 500
+   */
+  static update (req, res, next) {
+    Movies.findByIdAndUpdate(req.params.id, {
+      title: req.body.title,
+      year: req.body.year,
+      genre: req.body.genre,
+      poster: req.body.poster,
+      runtime: req.body.runtime
+    }, {
+      new: true,
+      runValidators: true
+    })
+      .exec((err, movie) => {
+        err ? next(err) : res.status(200).json(movie)
+      })
+  }
 }
