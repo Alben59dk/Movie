@@ -4,7 +4,7 @@ const Movies = require('../controllers/movies')
 
 // GET
 router.get('/:id', (req, res, next) => {
-  Movies.read()
+  Movies.read(req, res, next)
 })
 
 // POST
