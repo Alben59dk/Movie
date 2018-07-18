@@ -6,13 +6,17 @@ MovieRouter.get('/', (req, res) => {
   MovieController.findAll(res)
 })
 
-MovieRouter.post('/addMovie', (req, res) => {
-  if (req.body.name && req.body.categorie && req.body.director && req.body.realise_date) {
+MovieRouter.post('/AddMovie', (req, res) => {
+  console.log(req.body)
+  if (req.body.name !== undefined) {
     MovieController.addOne(req, res)
+    console.log('route ok')
   } else {
     res.status(400).json({
       error: 'missing arguments'
     })
+    console.log('fuck')
+    console.log(req.body.name)
   }
 })
 

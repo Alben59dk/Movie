@@ -18,13 +18,13 @@ class MovieController {
       })
   }
   static addOne (req, res) {
-    let newMovie = new MovieModel({
+    let MovieInfo = new MovieModel({
       name: req.body.name,
       categorie: req.body.categorie,
       director: req.body.director,
       realise_date: req.body.realise_date
     })
-    newMovie.save(function (err, movie) {
+    MovieInfo.save(function (err, movie) {
       if (err) {
         if (err.code === 11000) {
           res.status(409).json({
