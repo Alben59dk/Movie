@@ -18,11 +18,6 @@ router.get('/:id', (req, res) => {
   new Movies(req, res).read()
 })
 
-// Update a movie
-router.put('/:id', (req, res) => {
-  new Movies(req, res).update()
-})
-
 // Delete a movie
 router.delete('/:id', (req, res) => {
   new Movies(req, res).delete()
