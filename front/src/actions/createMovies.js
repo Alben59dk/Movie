@@ -52,10 +52,10 @@ export const createMoviesFailed = (error) => {
 export const fetchMovies = (movies) => {
   return dispatch => {
     dispatch(createMovies())
-    return Requests.post('movie/create')
+    return Requests.post('movie/create', movies)
       .then(response => {
         dispatch(createMoviesSuccess(response.data))
-          .catch(err => dispatch(createMoviesFailed(err.response)))
       })
+      .catch(err => dispatch(createMoviesFailed(err.response)))
   }
 }
