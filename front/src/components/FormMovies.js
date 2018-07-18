@@ -41,7 +41,14 @@ export default class FormMovies extends Component {
 
   handleSubmit (event) {
     event.preventDefault()
-    this.props.fetchMovies(this.state.movies)
+
+    const formData = new FormData()
+    const movies = this.state.movies
+    for (let key in movies) {
+      formData.append(key, movies[ key ])
+    }
+    this.props.fetchMovies(formData)
+    console.log(this.state.movies)
   }
 
   render () {
@@ -52,32 +59,41 @@ export default class FormMovies extends Component {
 
             <FormGroup>
               <Label for='title'>Title</Label>
-              <Input name='title' id='title' placeholder='Title' required value={this.state.movies.title} onChange={this.handleChange} />
+              <Input type='text' name='title' id='title' placeholder='Title' required value={this.state.movies.title} onChange={this.handleChange} />
             </FormGroup>
 
             <FormGroup>
               <Label for='year'>Année</Label>
-              <Input name='year' id='year' placeholder='Année' min='1888' value={this.state.movies.year} onChange={this.handleChange} />
+              <Input type='number' name='year' id='year' placeholder='Année' min='1888' value={this.state.movies.year} onChange={this.handleChange} required />
             </FormGroup>
 
             <FormGroup>
               <Label for='runtime'>Durée</Label>
-              <Input name='runtime' id='runtime' placeholder='Durée' min='0' value={this.state.movies.runtime} onChange={this.handleChange} />
+              <Input type='number' name='runtime' id='runtime' placeholder='Durée' min='0' value={this.state.movies.runtime} onChange={this.handleChange} required />
             </FormGroup>
 
             <FormGroup>
               <Label for='poster'>Affice</Label>
-              <Input name='poster' id='poster' placeholder='affiche' value={this.state.movies.poster} onChange={this.handleChange} />
+              <Input type='file' id='poster' placeholder='affiche' onChange={
+                event => {
+                  let file = event.target.files[0]
+                  let data = this.state.movies
+                  data.poster = file
+                  this.setState({
+                    movies: data
+                  })
+                }
+              } required />
             </FormGroup>
 
             <FormGroup>
               <Label for='description'>Description</Label>
-              <Input type='textarea' id='description' name='description' value={this.state.movies.description} onChange={this.handleChange} />
+              <Input type='textarea' id='description' name='description' value={this.state.movies.description} onChange={this.handleChange} required />
             </FormGroup>
 
             <FormGroup>
               <Label for='genre'>Genre</Label>
-              <Input type='select' name='genre' id='genre' multiple value={this.state.movies.genre} onChange={this.handleChange} >
+              <Input type='select' name='genre' id='genre' multiple value={this.state.movies.genre} onChange={this.handleChange} required >
                 {
                   LIST_GENRE.map((elt, index) => <option key={index} value={elt}>{elt}</option>)
                 }
