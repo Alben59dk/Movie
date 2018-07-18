@@ -13,8 +13,8 @@ class MovieController {
       genres: params.genres.split(','),
       director: params.director,
       released: params.released,
-      boxOffice: params.boxOffice,
-      nationality: params.nationality
+      boxOffice: params.boxOffice ? params.boxOffice : undefined,
+      nationality: params.nationality ? params.nationality : undefined
     })
 
     movie.save((errS, obj) => {
