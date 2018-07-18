@@ -74,7 +74,7 @@ const reducer = (state = initialState, action) => {
         error: null,
         isFetchting: false,
         isLoad: true,
-        movies: [ ...action.movies.filter(film => film._id !== action.movies._id), action.movies ]
+        movies: [ ...state.movies.filter(film => film._id !== action.movies._id), action.movies ]
       })
     case GET_MOVIES_FAILED:
     case DELETE_MOVIES_FAILED:

@@ -45,7 +45,7 @@ class App extends Component {
 
             <Route exact path='/' component={ListMovies} />
             <Route exact path='/new' component={FormMovies} />
-            <Route exact path='/edit' component={FormMovies} />
+            <Route exact path='/edit/:id' component={FormMovies} />
             <Route path='/movie/:id' component={DetailMovie} />
 
             <Footer />

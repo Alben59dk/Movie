@@ -47,15 +47,16 @@ export const updateMoviesFailed = (error) => {
  * fetchMovies
  *
  * @param {string} id movies id to update
+ * @param {object} data data to update
  * @returns {object} return data or err response
  */
-export const fetchMovies = (id) => {
+export const fetchMovies = (id, data) => {
   return dispatch => {
     dispatch(updateMovies())
-    return Requests.put(`movie/${id}`)
+    return Requests.put(`movie/${id}`, data)
       .then(response => {
         dispatch(updateMoviesSuccess(response.data))
-          .catch(err => dispatch(updateMoviesFailed(err.response)))
       })
+      .catch(err => dispatch(updateMoviesFailed(err.response)))
   }
 }

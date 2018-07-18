@@ -4,6 +4,8 @@ import { Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap'
 
 import LIST_GENRE from '../utils/categories'
 
+import Requests from '../utils/Requests'
+
 export default class FormMovies extends Component {
   constructor (props) {
     super(props)
@@ -21,6 +23,29 @@ export default class FormMovies extends Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  componentDidMount () {
+    if (this.props.match.params.id !== undefined) {
+      Requests.get(`movie/${this.props.match.params.id}`)
+        .then(response => {
+          this.fillFields(response.data)
+        }
+        )
+        .catch(err => console.log(err))
+    }
+  }
+
+  fillFields (movies) {
+    this.setState({
+      movies: {
+        title: movies.title,
+        year: movies.year,
+        description: movies.description,
+        poster: movies.poster,
+        runtime: movies.runtime
+      }
+    })
   }
 
   /**
@@ -47,8 +72,7 @@ export default class FormMovies extends Component {
     for (let key in movies) {
       formData.append(key, movies[ key ])
     }
-    this.props.fetchMovies(formData)
-    console.log(this.state.movies)
+    this.props.match.params.id !== undefined ? this.props.update(this.props.match.params.id, this.state.movies) : this.props.fetchMovies(formData)
   }
 
   render () {
@@ -72,19 +96,22 @@ export default class FormMovies extends Component {
               <Input type='number' name='runtime' id='runtime' placeholder='Durée' min='0' value={this.state.movies.runtime} onChange={this.handleChange} required />
             </FormGroup>
 
-            <FormGroup>
-              <Label for='poster'>Affice</Label>
-              <Input type='file' id='poster' placeholder='affiche' onChange={
-                event => {
-                  let file = event.target.files[0]
-                  let data = this.state.movies
-                  data.poster = file
-                  this.setState({
-                    movies: data
-                  })
-                }
-              } required />
-            </FormGroup>
+            {
+              this.props.match.params.id === undefined &&
+              <FormGroup>
+                <Label for='poster'>Affice</Label>
+                <Input type='file' id='poster' placeholder='affiche' onChange={
+                  event => {
+                    let file = event.target.files[0]
+                    let data = this.state.movies
+                    data.poster = file
+                    this.setState({
+                      movies: data
+                    })
+                  }
+                } required />
+              </FormGroup>
+            }
 
             <FormGroup>
               <Label for='description'>Description</Label>
@@ -93,7 +120,7 @@ export default class FormMovies extends Component {
 
             <FormGroup>
               <Label for='genre'>Genre</Label>
-              <Input type='select' name='genre' id='genre' multiple value={this.state.movies.genre} onChange={this.handleChange} required >
+              <Input type='select' name='genre' id='genre' value={this.state.movies.genre} onChange={this.handleChange} required >
                 {
                   LIST_GENRE.map((elt, index) => <option key={index} value={elt}>{elt}</option>)
                 }

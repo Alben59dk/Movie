@@ -27,7 +27,7 @@ router.get('/:id', (req, res, next) => {
 })
 
 // POST
-router.post('/create', upload.single('image'), (req, res, next) => {
+router.post('/create', upload.single('poster'), (req, res, next) => {
   Movies.create(req, res, next)
 })
 

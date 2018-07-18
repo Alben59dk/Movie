@@ -30,7 +30,6 @@ export default class DetailMovie extends Component {
   }
 
   fillFields (movies) {
-    console.log(movies)
     this.setState({
       movies: {
         title: movies.title,
