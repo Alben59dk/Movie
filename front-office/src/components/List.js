@@ -106,15 +106,11 @@ class List extends Component {
         <Form>
         <Row className={'brad-10  bg-white'}>
             <Col className={'border-green'}>
-                <h1 className={'txtcenter font-b'}><i className={'playstation pink icon'}></i> Mega Filters GFX 300D <i className={'playstation pink icon'}></i></h1>
-                {this.state.sauron === true ?  
-                (<div><h1 className={'txtcenter forder'}>ONE RING TO RULE THEM ALL BITCH!</h1>
-                <div className={'w100p txtcenter'}>
-                    <img className={'txtcenter'} src={sauron}/>
-                </div></div>) : null}
+                <h1 className={this.state.sauron === false ? 'txtcenter font-b' : 'txtcenter tengan font-b'}><i className={'playstation pink icon'}></i> Mega Filters GFX 300D <i className={'playstation pink icon'}></i></h1>
+
                 <div className={'w100p txtcenter p-2'}>
                     <Button color='danger' className={'txtcenter'} onClick={this.toSauron.bind(this)}><i className={this.state.sauron === false ? 'txtcenter thermometer icon massive empty': 'txtcenter thermometer icon massive full'}></i></Button>
-
+                    <p className={'font-b pT-1'}><i className={'exclamation red big triangle icon'}></i>NE PAS CLIQUER ICI!<i className={'exclamation red big triangle icon'}></i></p>
                 </div>
                     
                 <Form.Group className={'border-coral p-2 brad-10 bg-pink'} widths='equal'>
@@ -135,7 +131,11 @@ class List extends Component {
             </Col>
         </Row>
         </Form>
-        <Divider className='color-white border-white'/>
+        {this.state.sauron === true ?  
+                (<div><h1 className={'txtcenter color-white forder'}>ONE RING TO RULE THEM ALL BITCH!</h1>
+                <div className={'w100p txtcenter'}>
+                    <img className={'txtcenter'} src={sauron}/>
+                </div></div>) : null}
         <Table celled padded>
           <Table.Header>
               <Table.Row>
