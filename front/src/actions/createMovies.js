@@ -38,7 +38,7 @@ export const createMoviesSuccess = (movies) => {
  */
 export const createMoviesFailed = (error) => {
   return {
-    type: CREATE_MOVIES_SUCCESS,
+    type: CREATE_MOVIES_FAILED,
     error: error
   }
 }
@@ -49,13 +49,17 @@ export const createMoviesFailed = (error) => {
  * @param {object} movies movies to create
  * @returns {object} return data or err response
  */
-export const fetchMovies = (movies) => {
+export const fetchMovies = (movies, success, echec) => {
   return dispatch => {
     dispatch(createMovies())
     return Requests.post('movie/create', movies)
       .then(response => {
+        success()
         dispatch(createMoviesSuccess(response.data))
       })
-      .catch(err => dispatch(createMoviesFailed(err.response)))
+      .catch(err => {
+        dispatch(createMoviesFailed(err.response))
+        echec(err.response.statusText)
+    })
   }
 }

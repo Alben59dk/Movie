@@ -38,7 +38,7 @@ export const updateMoviesSuccess = (movies) => {
  */
 export const updateMoviesFailed = (error) => {
   return {
-    type: UPDATE_MOVIES_SUCCESS,
+    type: UPDATE_MOVIES_FAILED,
     error: error
   }
 }
@@ -50,13 +50,17 @@ export const updateMoviesFailed = (error) => {
  * @param {object} data data to update
  * @returns {object} return data or err response
  */
-export const fetchMovies = (id, data) => {
+export const fetchMovies = (id, data, success, echec) => {
   return dispatch => {
     dispatch(updateMovies())
     return Requests.put(`movie/${id}`, data)
       .then(response => {
         dispatch(updateMoviesSuccess(response.data))
+        success()
       })
-      .catch(err => dispatch(updateMoviesFailed(err.response)))
+      .catch(err => {
+        dispatch(updateMoviesFailed(err.response))
+        echec(err.status)
+      })
   }
 }

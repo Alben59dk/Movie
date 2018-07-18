@@ -6,6 +6,8 @@ import LIST_GENRE from '../utils/categories'
 
 import Requests from '../utils/Requests'
 
+import AlertBanner from './AlertBanner'
+
 export default class FormMovies extends Component {
   constructor (props) {
     super(props)
@@ -18,6 +20,11 @@ export default class FormMovies extends Component {
         poster: null,
         description: null,
         genre: null
+      },
+      alert: {
+        visible: false,
+        message: null,
+        status: null,
       }
     }
 
@@ -72,11 +79,43 @@ export default class FormMovies extends Component {
     for (let key in movies) {
       formData.append(key, movies[ key ])
     }
-    this.props.match.params.id !== undefined ? this.props.update(this.props.match.params.id, this.state.movies) : this.props.fetchMovies(formData)
+    this.props.match.params.id !== undefined ? this.props.update(this.props.match.params.id, this.state.movies, this.success.bind(this), this.echec.bind(this)) : this.props.fetchMovies(formData, this.success.bind(this), this.echec.bind(this))
+  }
+
+  success () {
+    this.setState({
+      alert: {
+      visible: true,
+      message: 'Enregistrement réalisé',
+      status: 'success'
+      }
+    })
+  }
+
+  echec (error) {
+    this.setState({
+      alert: {
+      visible: true,
+      message: error,
+      status: 'danger' 
+      }
+    })
+  }
+
+  toggle () {
+    this.setState({
+      alert: {
+        visible: false,
+        message: null,
+        status: null
+      }
+    })
   }
 
   render () {
     return (
+      <div>
+        <AlertBanner visible={!!this.state.alert.visible} message={this.state.alert.message} status={this.state.alert.status} toggle={this.toggle.bind(this)} />
       <Row className='justify-content-center'>
         <Col xs={12} sm={8}>
           <Form onSubmit={this.handleSubmit} >
@@ -134,6 +173,7 @@ export default class FormMovies extends Component {
           </Form>
         </Col>
       </Row>
+      </div>
     )
   }
 }
