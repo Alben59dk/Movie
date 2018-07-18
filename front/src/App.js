@@ -7,11 +7,15 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 // Components
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
 class App extends Component {
   render () {
     return (
-      <Navbar />
+      <div>
+        <Navbar />
+        <Footer />
+      </div>
     )
   }
 }
