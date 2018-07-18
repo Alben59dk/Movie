@@ -1,16 +1,15 @@
 import React, { Component } from 'react'
-import './App.css'
 import Carou from './components/Carousel.js'
 import { Container } from 'reactstrap'
 
-class App extends Component {
+import './style/home.css'
+
+export default class Home extends Component {
   render () {
     return (
       <Container fluid>
-        <Carou className='carou' />
+        <Carou />
       </Container>
     )
   }
 }
-
-export default App
