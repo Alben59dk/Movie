@@ -15,7 +15,7 @@ let initialState = {
   movies: []
 }
 
-export const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_MOVIES:
     case DELETE_MOVIES:
@@ -70,3 +70,5 @@ export const reducer = (state = initialState, action) => {
       return state
   }
 }
+
+export default reducer
