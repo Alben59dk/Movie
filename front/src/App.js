@@ -16,6 +16,7 @@ import ListMovies from './containers/ListMovies'
 import { Provider } from 'react-redux'
 import { applyMiddleware, createStore } from 'redux'
 import movies from './reducers/movies'
+import thunkMiddleware from 'redux-thunk'
 
 // Redux utilities
 import logger from 'redux-logger'
@@ -24,7 +25,10 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 const store = createStore(
   movies,
   composeWithDevTools(
-    applyMiddleware(logger)
+    applyMiddleware(
+      thunkMiddleware,
+      logger
+    )
   )
 )
 
