@@ -35,6 +35,26 @@ class GenreController {
       }
     })
   }
+
+  static findAll (req, res) {
+    GenreModel.find({})
+      .exec(function (err, result) {
+        if (err) {
+          console.log('TESSSSST');
+          res.status(503).json({
+            error: err.message
+          })
+          return
+        }
+        if (result) {
+          console.log('============');
+          res.status(200).json(result)
+        } else {
+          console.log('++++++++++++++++');
+          res.status(200).json([])
+        }
+      })
+  }
 }
 
 module.exports = GenreController
