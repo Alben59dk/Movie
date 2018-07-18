@@ -64,7 +64,7 @@ export default class AddMovieForm extends Component {
               </FormGroup>
               <FormGroup row className='centered'>
                 <Col sm={5}>
-                  <Label>Nom des auteurs*</Label>
+                  <Label>Nom du réalisateur*</Label>
                   <Input type='text' name='author' onChange={this.handleChange} />
                 </Col>
                 <Col sm={5}>
