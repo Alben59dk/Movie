@@ -13,7 +13,7 @@ import {
     DropdownItem
 } from 'reactstrap';
 
-export default class navbar extends React.Component {
+export default class example extends React.Component {
     constructor(props) {
         super(props);
 
