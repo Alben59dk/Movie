@@ -15,11 +15,6 @@ const moviesSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
-  released: {
-    type: String,
-    required: true,
-    trim: true
-  },
   runtime: {
     type: String,
     required: true,
@@ -45,6 +40,11 @@ const moviesSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
+  plot: {
+    type: String,
+    required: true,
+    trim: true
+  },
   language: {
     type: String,
     required: true,
@@ -64,7 +64,7 @@ const moviesSchema = new mongoose.Schema({
     required: true
   },
   boxOffice: {
-    type: Number,
+    type: String,
     required: true
   },
   production: {
