@@ -15,12 +15,14 @@ MovieRouter.post('/', imageUpload, (req, res) => {
       req.body.plot &&
       req.body.genres &&
       req.body.director &&
-      req.body.released &&
-      req.file) {
+    //  req.body.released &&
+      req.file
+  ) {
+    console.log('ayé')
     MovieController.addNew(req, res)
   } else {
     res.status(400).json({
-      error: 'missing arguments'
+      error: 'Il te manque des infos poto'
     })
   }
 })
