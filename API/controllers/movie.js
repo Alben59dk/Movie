@@ -1,16 +1,14 @@
 const MovieModel = require('../models/movie')
-const fs = require('fs')
 
 class MovieController {
 
   static addNew (req, res) {
     let params = req.body
-    let image = req.file
     let movie = new MovieModel({
       title: params.title,
-      image: image.path,
+      image: params.image,
       plot: params.plot,
-      genres: params.genres.split(','),
+      genres: params.genres,
       director: params.director,
       released: params.released,
       boxOffice: params.boxOffice ? params.boxOffice : undefined,
@@ -18,20 +16,13 @@ class MovieController {
     })
     movie.save((errS, obj) => {
       if (errS) {
-        fs.unlink(image.path, (errU) => {
-          if (errU) {
-            res.status(503).json({
-              error: errU.message
-            })
-          }
-          console.log(image.path + 'was deleted')
-        })
         if (errS.code === 11000) {
           res.status(409).json({
             code: 11000,
             error: errS.message
           })
         } else {
+          console.log('un autre non');
           res.status(503).json({
             error: errS.message
           })
@@ -42,6 +33,7 @@ class MovieController {
         ]
         MovieModel.populate(obj, opts, (errP, obj) => {
           if (errP) {
+            console.log('cest un non');
             res.status(503).json({
               error: errP.message
             })
@@ -55,12 +47,10 @@ class MovieController {
 
   static findAll (req, res) {
     MovieModel.find({})
-      .populate('director')
       .populate('genres')
       .sort('title')
       .exec(function (err, result) {
         if (err) {
-          console.log('TESSSSST');
           res.status(503).json({
             error: err.message
           })
@@ -74,6 +64,18 @@ class MovieController {
           res.status(200).json([])
         }
       })
+  }
+
+  static deleteOne (id, res) {
+    MovieModel.findByIdAndDelete(id, (err) => {
+      if (err) {
+        res.status(503).json({
+          error: err.message
+        })
+        return
+      }
+      res.status(204).json({})
+    })
   }
 }
 
