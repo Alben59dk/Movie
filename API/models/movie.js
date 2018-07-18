@@ -19,12 +19,12 @@ let movieSchema = new mongoose.Schema({
     ref: 'GenreModel'
   },
   director: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref: 'DirectorModel'
+    type: String,
+    required: true
   },
   released: {
     type: Date,
+    default: Date.now,
     required: true
   },
   boxOffice: {
@@ -37,5 +37,5 @@ let movieSchema = new mongoose.Schema({
   }
 })
 
-let MovieModel = mongoose.model('MovieModel', movieSchema)
+let MovieModel = mongoose.model('MovieModel', movieSchema, 'movies')
 module.exports = MovieModel
