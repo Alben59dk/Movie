@@ -28,7 +28,7 @@ export default class Footer extends Component {
             </Row>
             <p className='madeWithLove'>
               <a href='https://wildcodeschool.fr/lille/'>
-               Made with by WildCodeSchool Lille </a>
+               Made with love by WildCodeSchool Lille </a>
             </p>
           </Container>
         </footer>
