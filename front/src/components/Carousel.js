@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption, Row } from 'reactstrap'
+import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption, Row, Container } from 'reactstrap'
 
 const items = [
   {
@@ -72,18 +72,20 @@ export default class Carou extends Component {
     })
 
     return (
-      <Row>
-        <Carousel
-          activeIndex={activeIndex}
-          next={this.next}
-          previous={this.previous}
-        >
-          <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
-          {slides}
-          <CarouselControl direction='prev' directionText='Previous' onClickHandler={this.previous} />
-          <CarouselControl direction='next' directionText='Next' onClickHandler={this.next} />
-        </Carousel>
-      </Row>
+      <Container fluid>
+        <Row>
+          <Carousel
+            activeIndex={activeIndex}
+            next={this.next}
+            previous={this.previous}
+          >
+            <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+            {slides}
+            <CarouselControl direction='prev' directionText='Previous' onClickHandler={this.previous} />
+            <CarouselControl direction='next' directionText='Next' onClickHandler={this.next} />
+          </Carousel>
+        </Row>
+      </Container>
     )
   }
 }

@@ -19,7 +19,7 @@ export default class MovieAdd extends Component {
         language: '',
         awards: '',
         poster: '',
-        metascore: '',
+        metascore: null,
         boxOffice: '',
         production: ''
       }
