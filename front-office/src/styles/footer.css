@@ -1,0 +1,26 @@
+.footerLogo {
+  max-height: 200px;
+}
+
+footer {
+  background-color: #3d3d3d;
+}
+
+.footerText {
+  color:yellow;
+  margin-top: 4%;
+  font-style: italic;
+}
+
+.footerText h2 {
+  font-size: 25px;
+}
+
+.madeWithLove {
+  text-align:center;
+}
+
+.madeWithLove a{
+  text-decoration: none;
+  color:yellow !important;
+}
