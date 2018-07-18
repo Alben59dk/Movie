@@ -1,0 +1,17 @@
+.welcomeText {
+  text-align: center;
+  margin: auto;
+  padding: 5%;
+}
+
+.welcomeSubtext{
+  text-align: center;
+  margin: auto;
+  padding-bottom: 5%;
+}
+
+.listTitle {
+  margin: auto;
+  padding: 2%;
+  text-align: center;
+}
