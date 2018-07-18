@@ -1,87 +1,77 @@
 var mongoose = require('mongoose')
 
-const contactsSchema = new mongoose.Schema({
-  Title: {
+const moviesSchema = new mongoose.Schema({
+  title: {
     type: String,
     required: true,
     trim: true
   },
-  Year: {
+  year: {
     type: Number,
     required: true
   },
-  Rated: {
+  rated: {
     type: String,
     required: true,
     trim: true
   },
-  Released: {
+  released: {
     type: String,
     required: true,
     trim: true
   },
-  Runtime: {
+  runtime: {
     type: String,
     required: true,
     trim: true
   },
-  Genre: {
+  genre: {
     type: String,
     required: true,
     trim: true
   },
-  Director: {
+  director: {
     type: String,
     required: true,
     trim: true
   },
-  Writer: {
+  writer: {
     type: String,
     required: true,
     trim: true
   },
-  Actors: {
+  actors: {
     type: String,
     required: true,
     trim: true
   },
-  Language: {
+  language: {
     type: String,
     required: true,
     trim: true
   },
-  Country: {
+  awards: {
     type: String,
     required: true,
     trim: true
   },
-  Awards: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  Poster: {
+  poster: {
     type: String,
     required: true
   },
-  Metascore: {
+  metascore: {
     type: Number,
     required: true
   },
-  DVD: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  BoxOffice: {
+  boxOffice: {
     type: Number,
     required: true
   },
-  Production: {
+  production: {
     type: String,
     required: true,
     trim: true
   }
 })
 
-module.exports = mongoose.model('movies', contactsSchema)
+module.exports = mongoose.model('movies', moviesSchema)
