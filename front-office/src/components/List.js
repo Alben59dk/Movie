@@ -1,0 +1,163 @@
+import React, { Component } from 'react';
+import { Container, Row, Col } from 'reactstrap'
+import { Header, Table, Rating, Image, Form, Input, Divider } from 'semantic-ui-react'
+import axios from 'axios'
+
+import fire from '../images/fire.gif'
+
+function keysUpTo(start, limit){
+    let array = []
+    for (let i = start; i < limit + 1; i++){
+        array.push({key: i, text: i, value: i})
+    }
+    return array
+}
+
+let Notes = keysUpTo(1, 5)
+let Years = keysUpTo(1940, 2018)
+
+let genres = ['Action', 'Comedy', 'Romance', 'Animation', 'Documentaries', 'Dramas', 'Horror', 'Sci-Fi', 'Thrillers', 'Children']
+let genreOptions = []
+
+for (let i = 0; i < genres.length; i++){
+    genreOptions.push({key: i, text: genres[i], value: genres[i]})
+}
+
+class List extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            movies: null,
+            filters: {
+                title: '',
+                genre: '',
+                release_date: 1940
+            }
+        }
+        this.handleChange = this.handleChange.bind(this)
+    }
+
+    componentDidUpdate(){
+        console.log(this.state)
+    }
+
+
+    componentWillMount(){
+        axios({
+            method: 'GET',
+            url: 'http://localhost:3005/movies'
+        })
+        .then((res) => {
+            this.setState({
+                ...this.state,
+                movies: res.data
+            })
+        })
+    }
+
+    handleChange(e){
+        this.setState({
+            filters: {
+                ...this.state.filters,
+                [e.target.name]: e.target.value
+            }
+        })
+    }
+
+    handleOptions(name, value){
+        this.setState({
+            filters: {
+                ...this.state.filters,
+                [name]: value
+            }
+        })
+    }
+
+    render() {
+        if(this.state.movies === null) {return <p>Loading...</p>} else {
+        let movies = this.state.movies
+                        .filter(movie => movie.title.includes(this.state.filters.title) === true )
+                        .filter(movie => (movie.release_date > this.state.filters.release_date) === true)
+        return (           
+        <Container className={'mT-3 mB-3'}>
+        <Row className={''}>
+            <Col className={'txtcenter'}>
+                <img className={'txtcenter h100p'} src={fire} size='small' circular />
+            </Col>
+            <Col className={' vCenter'}>   
+                <h1 className={'w100p txtcenter color-white'}>Listing of the movies</h1>
+            </Col>
+            <Col className={' txtcenter'}>
+                <img className={' txtcenter'} src={fire} size='small' circular />
+            </Col>
+        </Row>
+        <Form>
+        <Row className={'brad-10  bg-white'}>
+            <Col>
+                <h1 className={'txtcenter font-b'}><i className={'playstation pink icon'}></i> Mega Filters GFX 300D <i className={'playstation pink icon'}></i></h1>
+                <Form.Group className={'border-coral p-2 brad-10 bg-pink'} widths='equal'>
+                    <Form.Field>
+                        <label>Title</label>
+                        <input name='title' placeholder='' onChange={this.handleChange.bind(this)}/>
+                    </Form.Field>
+                    <Form.Field>
+                        <Form.Select onChange={(e, { value }) => { this.handleOptions('release_date', value)}}  fluid label='Year' options={Years} placeholder='Year' />
+                    </Form.Field>
+                    <Form.Field>
+                        <Form.Select onChange={(e, { value }) => { this.handleOptions('note', value)}} fluid label='Note' options={Notes} placeholder='Note' />
+                    </Form.Field>
+                    <Form.Field>
+                        <Form.Select onChange={(e, { value }) => { this.handleOptions('genre', value)}} fluid label='Genre' options={genreOptions} placeholder='Genre' />
+                    </Form.Field>
+                </Form.Group>
+            </Col>
+        </Row>
+        </Form>
+        <Divider className='color-white border-white'/>
+        <Table celled padded>
+          <Table.Header>
+              <Table.Row>
+              <Table.HeaderCell singleLine>Title</Table.HeaderCell>
+              <Table.HeaderCell>Genre</Table.HeaderCell>
+              <Table.HeaderCell>Nezzar's Note</Table.HeaderCell>
+              <Table.HeaderCell>Length</Table.HeaderCell>
+              <Table.HeaderCell>Year</Table.HeaderCell>
+              <Table.HeaderCell>Summary</Table.HeaderCell>
+              </Table.Row>
+          </Table.Header>
+
+          <Table.Body>
+            {        movies.map((movie) => {return (
+
+                        <Table.Row>
+                            <Table.Cell>
+                                {movie.title}
+                            </Table.Cell>
+                            <Table.Cell singleLine>
+                                {movie.genre}
+                            </Table.Cell>
+                            <Table.Cell>
+                                <Rating icon='star' defaultRating={movie.note} maxRating={5} />
+                            </Table.Cell>
+                            <Table.Cell textAlign='right'>
+                                {movie.length} mins
+                            </Table.Cell>
+                            <Table.Cell>
+                                {movie.release_date}
+                            </Table.Cell>
+                            <Table.Cell>
+                                {movie.summary}
+                            </Table.Cell>
+                        </Table.Row>
+                        )
+                    }
+                )
+            }                    
+            </Table.Body>
+        </Table>
+    </Container>)
+        }
+    }
+}
+
+export default List;

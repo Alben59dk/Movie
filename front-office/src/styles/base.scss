@@ -1,0 +1,347 @@
+
+@for $i from 1 to 101 {
+    .w#{$i}p {
+        width: $i + % !important
+    }
+}
+
+@for $i from 1 to 101 {
+    .h#{$i}p {
+        height: $i + % !important
+    }
+}
+
+@for $i from 1 to 101 {
+    .w#{$i}vw {
+        width: $i + vw
+    }
+}
+
+@for $i from 1 to 101 {
+    .h#{$i}vh {
+        height: $i + vh
+    }
+}
+
+
+//////////////////////
+// PADDING STYLING  //
+//////////////////////
+.nopadding {
+    padding: 0 !important;
+}
+
+@for $i from 1 to 101 {
+    .p-#{$i} { padding: $i + % !important}
+}
+
+@for $i from 1 to 101 {
+    .pT-#{$i} { padding-top: $i + %}
+}
+
+@for $i from 1 to 101 {
+    .pB-#{$i} { padding-bottom: $i + %}
+}
+
+@for $i from 1 to 101 {
+    .pL-#{$i} { padding-left: $i + %}
+}
+
+@for $i from 1 to 101 {
+    .pR-#{$i} { padding-right: $i + %}
+}
+//////////////////////
+//  MARGIN STYLING  //
+//////////////////////
+.nomargin {
+    margin: 0 !important;
+}
+
+@for $i from 1 to 101 {
+    .m-#{$i} { margin: $i + %}
+}
+
+@for $i from 1 to 101 {
+    .mT-#{$i} { margin-top: $i + %}
+}
+
+@for $i from 1 to 101 {
+    .mB-#{$i} { margin-bottom: $i + %}
+}
+
+@for $i from 1 to 101 {
+    .mR-#{$i} { margin-right: $i + %}
+}
+
+
+@for $i from 1 to 101 {
+    .mL-#{$i} { margin-left: $i + %}
+}
+
+//////////////////////
+//     BORDERS      //
+//////////////////////
+
+$color-collection: (coral,orange,yellow,black,green,blue,grey,purple, red, white, pink);
+
+@for $color from 1 to (length($color-collection) + 1) {
+    .border-#{nth($color-collection, $color)} {
+        border: nth($color-collection, $color) 2px solid !important
+    }
+}
+
+@for $color from 1 to (length($color-collection) + 1) {
+    .bg-#{nth($color-collection, $color)} {
+        background-color: nth($color-collection, $color) !important
+    }
+}
+
+@for $color from 1 to (length($color-collection) + 1) {
+    .color-#{nth($color-collection, $color)} {
+        color: nth($color-collection, $color) !important
+    }
+}
+
+@for $i from 1 to 101 {
+    .brad-#{$i} {
+        border-radius: $i + px;
+    }
+}
+
+@for $i from 1 to 30 {
+    .zindex-#{$i} {
+        z-index: $i !important;
+    }
+}
+
+.zindex-unset {
+    z-index: unset;
+}
+
+// @for $i from 1 to 10 {
+
+// }
+
+//Vertical Centering
+.vCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+
+
+
+.vTop {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.vBottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.vRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.hauto {
+    height: 100%;
+}
+
+.wauto {
+    width: 100%;
+}
+
+.imgResponsive {
+    max-width: 100%;
+    max-height: 100%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-fill {
+    flex-grow: 1
+}
+
+//display options
+.dispinblock {
+    display: inline-block
+}
+
+.dispblock {
+    display: block;
+}
+
+//Text options
+.txtright {
+    text-align: right;
+}
+
+.txtcenter {
+    text-align: center;
+}
+
+.txtleft {
+    text-align: left;
+}
+
+.jcontent {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+
+//Font Options
+.font-b {
+    font-weight: bold;
+}
+
+//Objetc-fit options
+.ofit-cover {
+    object-fit: cover;
+}
+
+.font-full {
+    font-size: 100em;
+}
+
+.font-l {
+    font-weight: 200 !important;
+}
+
+.yellow-ititoca {
+    color: #F3C300 !important
+}
+
+.bg-ititoca {
+    background-color: #415364 !important;
+}
+
+.border-blue-ititoca {
+    border: #415364 3px solid;
+}
+
+.color-blue-ititoca {
+    color: #415364
+}
+
+.bg-ititoca-orange {
+    background-color: #F3C300;
+
+}
+
+.nopadding {
+    padding: 0 !important;
+}
+
+.nomargin {
+    margin: 0 !important;
+}
+
+.layAbsolute {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.layAbsoluteRight {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.bg-ititoca-section {
+    background-color: #f5f5f5;
+}
+
+.bg-ititoca-section-modal {
+    background-color: #dcdcdc;
+}
+
+
+.hCenter {
+    margin: auto;
+}
+
+.hauto {
+    height: auto;
+}
+
+.wauto {
+    width: auto;
+}
+
+.ofit-contain {
+    object-fit: contain;
+}
+
+.yellow-button {
+  background-color: #F3C300;
+}
+
+.txtbutton {
+  color: #415364;
+}
+
+.orange-ititoca {
+  color: #E66208 !important;
+}
+
+.bg-grey-ititoca [type=text]{
+  background-color: #415364 !important;
+}
+
+.grey-ititoca {
+  color: #415364
+}
+
+.border-yellow {
+  border: 2px solid #F3C300;
+}
+
+.article-bg {
+    background-color: grey;
+}
+
+.article-border-grey {
+    border: rgb(184, 184, 184) solid 1px;
+}
+
+.pT-logo {
+    margin-top: 170px;
+}
+
+.bg-red-ititoca {
+  background-color: #CD5946;
+}
+
+.white-ititoca {
+  color : #F5F5F5;
+}
+
+.vc_row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.txtnone {
+    text-decoration: none !important;
+}
+
+.posRelative {
+    position: relative
+}
+
+.add-bg-trans {
+    background-color: rgba(255, 255, 255, 0.7)
+}
