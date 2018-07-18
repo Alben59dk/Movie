@@ -1,9 +1,15 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {} from 'reactstrap'
 
-  const VideoListItem = ({movie}) => {
-    return ( <li> Un film recommandé: {movie} </li>
-    )
+export default class VideoListItem extends Component {
+    constructor(props) {
+        super(props)
+        this.state= {movie: 'movie'}
+    }
+    
+    render () {
+        return (
+            <p>Un film recommandé : {this.props.movie}</p>
+        )
+    }
 }
-
-export default VideoListItem
