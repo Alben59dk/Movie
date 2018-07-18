@@ -1,21 +1,37 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import { Route, BrowserRouter, Switch } from 'react-router-dom'
+
+// Import General components
+import Header from './components/general/Header'
+import Footer from './components/general/Footer'
+
+// Import components
+import Home from './components/Home'
+import AddMovieForm from './components/AddMovieForm'
+import MoviesList from './components/MoviesList'
+
+import NotFound from './Components/General/NotFound'
+
+import './App.css'
+import './styles/home.css'
 
 class App extends Component {
-  render() {
+  render () {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+      <BrowserRouter>
+        <div>
+          <Header />
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/addmovie' component={AddMovieForm} />
+            <Route path='/movieslist' component={MoviesList} />
+            <Route component={NotFound} />
+          </Switch>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    )
   }
 }
 
-export default App;
+export default App
