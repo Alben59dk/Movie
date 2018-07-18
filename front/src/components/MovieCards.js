@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Col, Row } from 'reactstrap'
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Col, Row, Container } from 'reactstrap'
 import axios from 'axios'
+import MovieDel from './MovieDel'
 
 export default class MovieCards extends Component {
   constructor (props) {
@@ -56,9 +57,14 @@ export default class MovieCards extends Component {
 
   render () {
     return (
-      <Row>
-        {this.CardsLoop()}
-      </Row>
+      <Container fluid>
+        <Row>
+          <MovieDel />
+        </Row>
+        <Row>
+          {this.CardsLoop()}
+        </Row>
+      </Container>
     )
   }
 }

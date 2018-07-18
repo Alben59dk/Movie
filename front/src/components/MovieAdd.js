@@ -27,6 +27,7 @@ export default class MovieAdd extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
+
   handleChange (event) {
     let state = this.state.movies
     let field = event.target.name
