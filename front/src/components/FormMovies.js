@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap'
 
-const LIST_GENRE = ['comedie', 'drame', 'romance amoureuse', 'action', 'historique', 'peplum', 'western', 'aventure', 'thriller', 'fantastique', 'opera', 'science-fiction', 'horreur', 'catastrophe', 'portrait', 'anticipation', 'fantasie']
+import LIST_GENRE from '../utils/categories'
 
 export default class FormMovies extends Component {
   constructor (props) {
