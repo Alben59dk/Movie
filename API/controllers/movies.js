@@ -49,6 +49,23 @@ class MovieController {
                 })
     }
 
+    static getRandom(req, res){
+      MovieModel.aggregate([ { $sample: { size: 4 } } ])
+      .exec(function(err, data) {
+        if(err) {
+            res.status(503).json({
+              error: err.message
+            })
+            return
+          }
+          if(data) {
+            res.status(200).json(data)
+          } else {
+            res.status(200).json([])
+          }
+        })
+    }
+
     static findOne (id, res) {
         MovieModel.findById(id)
           .exec(function (err, data) {

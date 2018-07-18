@@ -33,25 +33,25 @@ export default class Example extends React.Component {
       <BrowserRouter>
         <div className={''}>
 
-        <Navbar className={'zindex-2'} color="light" light expand="md">
+        <Navbar className={'zindex-2'} color="dark" light expand="md">
           <NavbarBrand>
             <NavLink tag={ Link } to='/'>NEZZCINEMA</NavLink>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="mr-auto" navbar>
+            <Nav className="mr-auto color-white" navbar>
               <NavItem>
-                <NavLink tag={ Link } to='/list'>Search</NavLink>
+                <NavLink className={'color-white'} tag={ Link } to='/list'>Search</NavLink>
               </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
+              <UncontrolledDropdown  nav inNavbar>
+                <DropdownToggle className={'color-white'} nav caret>
                   Manage
                 </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem tag={Link} to='/manage'>
+                <DropdownMenu className={'bg-black'}>
+                  <DropdownItem className={'color-white'} tag={Link} to='/manage'>
                     Add a movie
                   </DropdownItem>
-                  <DropdownItem tag={ Link } to='/remove'>
+                  <DropdownItem className={'color-white'} tag={ Link } to='/remove'>
                     Remove a movie
                   </DropdownItem>
 

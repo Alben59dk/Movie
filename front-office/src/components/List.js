@@ -93,7 +93,7 @@ class List extends Component {
                         .filter(movie => (movie.note > this.state.filters.note) === true)
                         .filter(movie => (this.state.filters.genre === '' ? movie : movie.genre === this.state.filters.genre  ))
         return (           
-        <Container className={this.state.sauron === false ? 'mT-3 border-black bg-black mB-3' : 'mT-3 tengan border-black bg-black mB-3' }>
+        <Container className={this.state.sauron === false ? 'mT-3 border-black brad-8 bg-black mB-3' : 'mT-3 tengan border-black brad-8 bg-black mB-3' }>
         <Row className={''}>
             <Col className={'txtcenter'}>
                 <img className={'txtcenter h100p'} src={fire} size='small' circular />
