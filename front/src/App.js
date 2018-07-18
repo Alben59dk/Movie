@@ -9,13 +9,35 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 
+// Containers
+import ListMovies from './containers/ListMovies'
+
+// Redux logic
+import { Provider } from 'react-redux'
+import { applyMiddleware, createStore } from 'redux'
+import movies from './reducers/movies'
+
+// Redux utilities
+import logger from 'redux-logger'
+import { composeWithDevTools } from 'redux-devtools-extension'
+
+const store = createStore(
+  movies,
+  composeWithDevTools(
+    applyMiddleware(logger)
+  )
+)
+
 class App extends Component {
   render () {
     return (
-      <div>
-        <Navbar />
-        <Footer />
-      </div>
+      <Provider store={store}>
+        <div>
+          <Navbar />
+          <ListMovies />
+          <Footer />
+        </div>
+      </Provider>
     )
   }
 }
